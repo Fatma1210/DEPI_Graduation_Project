@@ -2,7 +2,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import logo from "../../Images/logo.svg";
-export default function SignIn() {
+
+export default function SignUp() {
   return (
     <div className="card mb-3" style={{ background: "#2B2B31" }}>
       <div className="container">
@@ -13,11 +14,36 @@ export default function SignIn() {
           <form className="row g-3 flex-column">
             <div className="col-auto">
               <input
-                type="email"
+                type="text"
                 className="form-control"
-                placeholder="Email"
+                placeholder="User Name"
                 id="input"
 
+              />
+              
+            </div>
+            <div className="col-auto">
+              <input
+                type="date"
+                className="form-control"
+                id="input"
+                placeholder="Date Of Birth" 
+              />
+            </div>
+            <div className="col-auto">
+              <input
+                type="email"
+                className="form-control"
+                id="input"
+                placeholder="Email" 
+              />
+            </div>
+            <div className="col-auto">
+              <input
+                type="password"
+                className="form-control"
+                id="input"
+                placeholder="Password" 
               />
             </div>
             <div className="col-auto">
@@ -39,12 +65,12 @@ export default function SignIn() {
                   checked
                 />
                 <label className="form-check-label d-block" htmlFor="flexCheckChecked" style={{color : "white"}}>
-                  Remember me
+                  i agree to the <span style={{color : "#ff568e"}}>Privacy Policy</span>
                 </label>  
                 <div className="col-auto d-flex justify-content-center" style={{color :"#ff568e !important"}}>
-                <button type="button" class="btn btn-outline btn-lg">Sign In</button> 
-              
+                <button type="button" class="btn btn-outline btn-lg">Sign Up</button>
                 </div>
+                <span className="text-white d-flex justify-content-center">Already have an account ? <span style={{color : "#ff568e"}}>Sign In!</span></span>
               </div>
             </div>
           </form>
