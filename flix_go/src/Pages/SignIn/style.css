@@ -1,0 +1,9 @@
+body{
+    background-image: url(https://flixgo.volkovdesign.com/main/img/bg/section__bg.jpg);
+}
+
+.card{
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}

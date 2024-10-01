@@ -1,10 +1,10 @@
-
-
+import SignIn from "./Pages/SignIn";
+import "./App.css"
 function App() {
   return (
-     <> 
-     Hello World
-     </>
+    <>
+      <SignIn></SignIn>
+    </>
   );
 }
 
