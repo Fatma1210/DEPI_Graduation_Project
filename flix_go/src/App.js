@@ -4,8 +4,8 @@ import SignUp from "./Pages/SignUp";
 function App() {
   return (
     <>
-      {/* <SignIn></SignIn> */}
-      <SignUp></SignUp>
+      <SignIn></SignIn>
+      {/* <SignUp></SignUp> */}
     </>
   );
 }
