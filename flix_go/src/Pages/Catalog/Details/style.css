@@ -6,6 +6,7 @@
     padding: 40px;
     min-height: 100vh; /* Ensures the container takes full viewport height */
     color: #fff; /* Ensure text is readable on the background */
+    margin-top: 20px;
 }
 
 /* Specific styles for the movie details section */

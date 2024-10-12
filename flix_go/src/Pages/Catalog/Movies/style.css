@@ -15,6 +15,7 @@ html, body {
     overflow: hidden;
     transition: transform 0.3s ease;
     max-width: 100%; /* Prevents overflow */
+    
 }
 
 .movie-card img {
