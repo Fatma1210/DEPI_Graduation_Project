@@ -45,14 +45,13 @@ export default function DetailsMovies() {
             <p className="movie-overview">{details.overview}</p>
             <p><strong>Release Date:</strong> {details.release_date}</p>
             <p><strong>Genres:</strong> {details.genres.map((genre) => genre.name).join(", ")}</p>
-            <Link to="/movies" className="btn" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>
+            <Link to="/movies" className="btn back-to-list-btn" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>
               Back to movies List
             </Link>
           </div>
         </div>
       ) : (
         <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
-          {/* Replaced Loading text with LifeLine loading indicator */}
           <LifeLine color="#FF5599" size="medium" text="Loading" textColor="#FF5599" />
         </div>
       )}

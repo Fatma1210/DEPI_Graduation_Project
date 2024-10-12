@@ -3,15 +3,11 @@
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease;
-    left: 0;
-    width: 100%;
   }
-  .movie-card-container {
-    top: -100px;
-    position: relative;
-  }
+  
   .movie-card img {
     width: 100%;
+    height: auto;
     display: block;
     border-radius: 10px;
   }
@@ -43,9 +39,5 @@
   }
   
   .rating {
-    color: #ff5599;
-  }
-  .card{
-    width: 100%;
-    height: 100%;
+    color: #FF5599;
   }

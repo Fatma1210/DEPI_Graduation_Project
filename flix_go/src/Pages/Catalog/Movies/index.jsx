@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./style.css";
+import './style.css'
+import '../../../App.css'
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./style.css";
 import { Link } from "react-router-dom";
-import bgImage from "../../../assets/gridview-bg.jpg"; // Import the background image
+import bgImage from "../../../assets/gridview-bg.jpg"; // Import the same background image
 
 const API_URL =
   "https://api.themoviedb.org/3/trending/all/day?api_key=c9fac173689f5f01ba1b0420f66d7093";
@@ -15,7 +17,9 @@ const TitleSection = () => {
       style={{
         backgroundColor: "black",
         height: "200px",
-        backgroundImage: `url(${bgImage || "https://example.com/your-bg-image.jpg"})`,
+        backgroundImage: `url(${
+          bgImage || "https://example.com/your-bg-image.jpg"
+        })`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         width: "100vw", // Ensure the section takes up the full viewport width
@@ -34,18 +38,18 @@ const TitleSection = () => {
           </div>
           <div className="col-6 d-flex justify-content-end align-items-center">
             <ul
-              className="header d-inline-flex"
+              className="catalog d-inline-flex"
               style={{ marginTop: "10px", listStyle: "none" }}
             >
-              <li className="header__item">
+              <li className="catalog__item">
                 <a href="/" className="text-light">
                   Home
                 </a>
               </li>
-              <li className="header__item mx-2">
+              <li className="catalog__item mx-2">
                 <i className="fas fa-chevron-right text-light"></i>
               </li>
-              <li className="header_item header_item--active text-light">
+              <li className="catalog__item header__item--active text-light">
                 Movies
               </li>
             </ul>
@@ -90,6 +94,7 @@ const TitleSection = () => {
   );
 };
 
+
 const Movies = () => {
   const [movies, setMovies] = useState([]);
 
@@ -107,8 +112,8 @@ const Movies = () => {
   return (
     <div className="container my-5">
       <TitleSection />
-      <div className="row ">
-        <hr />
+      <hr />
+      <div className="row">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
@@ -123,7 +128,7 @@ const MovieCard = ({ movie }) => {
     <div className="col-md-2 mb-4 movie-card-container">
       {/* Wrap the card inside a Link to navigate to the movie details */}
       <Link to={`/movies/${movie.id}`} className="text-decoration-none">
-        <div className="card bg-dark text-light movie-card">
+        <div className="card h-100 bg-dark text-light movie-card">
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title || "Movie Poster"}
@@ -134,15 +139,11 @@ const MovieCard = ({ movie }) => {
           </div>
           <div className="card-body">
             <h5 className="card-title">
-              {movie.title ||
-                movie.original_title ||
-                movie.name ||
-                "Untitled Movie"}
+              {movie.title || movie.original_title || movie.name || "Untitled Movie"}
             </h5>
             <p className="card-text">
               <span className="rating">
-                <i className="fa fa-star" aria-hidden="true"></i>{" "}
-                {` ${movie.vote_average}`}
+                <i className="fa fa-star" aria-hidden="true"></i> {` ${movie.vote_average}`}
               </span>
             </p>
           </div>
