@@ -14,15 +14,14 @@ import './App.css'
 function App() {
   return (
     <>
-<<<<<<< HEAD
-      <SignIn></SignIn>
-      {/* <SignUp></SignUp> */}
-=======
+   
      
       <Navbar></Navbar>
       <div className="container">
 
-<Routes>
+<Routes> 
+<Route path='signin' element={ <SignIn/>}  />
+<Route path='signup' element={ <SignUp/>}  />
   <Route path='' element={ <Home/>}  />
   <Route path='home' element={ <Home/>}  />
   <Route path='catalog' element={  <Catalog/>} />
@@ -47,7 +46,6 @@ function App() {
 
 </div>
 
->>>>>>> 4232d3f8935286551f64a1c627f528669d87eca7
     </>
   );
 }

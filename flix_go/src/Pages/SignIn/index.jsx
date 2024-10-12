@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import Joi, { func } from "joi";
+import Joi from "joi";
 import axios from "axios";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import logo from "../../Images/logo.svg";
-export default function SignIn() {
+import { useNavigate } from "react-router-dom";
+export default function SignIn() { 
+  let navigate = useNavigate() ;
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
-  const [errorMessage, setErrorMessage] = useState("success");
+  const [BackEnderrorMessage, setBackEndErrorMessage] = useState("");
+  const [frontEndErrorMessage , setFrontEndErrorMessage] = useState([])
   const [check, setChecked] = useState(false);
+  const [userData , setUserData] = useState("") ;
+  const [rememberStatus , setRememberStatus] = useState(false) ;
   function getUserData(e) {
     let data = { ...loginData };
     data[e.target.name] = e.target.value;
@@ -31,8 +35,8 @@ export default function SignIn() {
   function handleSubmit(e) {
     e.preventDefault();
     const validate = validation();
-    if (validate.error) { // Check if validation error exists
-      setErrorMessage(validate.error.details);
+    if (validate.error) { 
+      setFrontEndErrorMessage(validate.error.details);
       console.log(validate.error.details);
     } else {
       axios
@@ -40,32 +44,45 @@ export default function SignIn() {
         .then((res) => {
           console.log("Response:", res); 
           const jwt = res.data.jwt;
-          console.log("JWT:", jwt);
+          console.log("JWT:", jwt); 
+          const user = res.data.user;
+          setUserData(JSON.stringify(user)) ;
+          console.log(user) ;
           localStorage.setItem("token", jwt);
+          navigate('/home') ;
         })
         .catch((err) => {
-          console.error("Error:", err);
+          console.log("Error:", err);
           if (err.response) {
-            console.error("Server responded with:", err.response.data);
-            setErrorMessage("Login failed: " + err.response.data.message);
+            console.log("Server responded with:", err.response.data);
+            setBackEndErrorMessage("Login failed: " + err.response.data);
           } else {
-            setErrorMessage("Login failed: " + err.message); 
+            setBackEndErrorMessage("Login failed: " + err.message); 
           }
         });
     }
   }
   
   function testCheck() {
-    if (check) return "checked";
+    if (check){
+      localStorage.setItem("userData" , userData) ;
+      setRememberStatus(true) ;
+      return "checked";
+    } 
     return "";
-  }
-  return (
-    <div className="card mb-3" style={{ background: "#2B2B31" }}>
+  } 
+  return ( 
+    <div className="card mb-3" style={{ background: "#2b2b31" }}>
       <div className="container">
         <div className="text-center mt-3">
           <img src={logo} alt="Logo" />
         </div>
-        <div className="card-body">
+        <div className="card-body"> 
+        {BackEnderrorMessage.length ? (
+      <h1 className="alert alert-danger h6">{BackEnderrorMessage}</h1>
+    ) : (
+      <></>
+    )}{" "}
           <form className="row g-3 flex-column" onSubmit={handleSubmit}>
             <div className="col-auto">
               <input
@@ -74,7 +91,8 @@ export default function SignIn() {
                 className="form-control"
                 placeholder="Email"
                 onChange={getUserData}
-              />
+              /> 
+   
             </div>
             <div className="col-auto">
               <input
@@ -93,7 +111,7 @@ export default function SignIn() {
                   value=""
                   id="flexCheckChecked"
                   style={{ backgroundColor: "#ff568e" }}
-                  onClick={() => {
+                  onChange={() => {
                     setChecked(!check);
                     testCheck();
                   }}
@@ -101,7 +119,7 @@ export default function SignIn() {
                 <label
                   className="form-check-label d-block"
                   htmlFor="flexCheckChecked"
-                  style={{ color: "white" }}
+                  style={{ color: "white" ,borderColor: "#2b2b31 !important" }}
                 >
                   Remember me
                 </label>

@@ -5,7 +5,7 @@ body{
 .card{ 
     width: 40%;
     position: absolute;
-    top: 15%;
+    top: 20% !important;
     left: 30%; 
     border-top-color: #ff568e !important;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Import Bootstrap JS
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'; 
 import NavLinkcomp from './Navcomp/NavLinkcomp';
 
 let navLinks = [
@@ -13,8 +13,8 @@ let navLinks = [
 
 ];
 
-export default function Navbar() {
-  return (
+export default function Navbar() { 
+  return ( 
 <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "#2c2b31" }}>
   <div className="container">
     <div style={{ width: '200px', height: '100%', backgroundColor: '#20282d' ,      borderRadius: '10px',  }} className="d-flex align-items-center justify-content-center">
@@ -39,7 +39,7 @@ export default function Navbar() {
           <NavLinkcomp key={index} link={link} />
         ))}
       </ul>
-      <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+      <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center d-flex">
         <li className="nav-item">
           <div style={{ 
             backgroundColor: '#ff568e', 
@@ -52,8 +52,29 @@ export default function Navbar() {
             </Link>
           </div>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link active ms-4" aria-current="page" to="signup">Sign Up</Link>
+        <li className="nav-item ms-3">
+          <div style={{ 
+            backgroundColor: '#ff568e', 
+            border: '1px solid #ff568e', 
+            borderRadius: '10px', 
+            padding: '5px 10px', 
+          }}>
+            <Link className="nav-link active" aria-current="page" to="signup" style={{ color: 'white', textDecoration: 'none' }}>
+              Sign Up
+            </Link>
+          </div>
+        </li> 
+        <li className="nav-item ms-3">
+          <div style={{ 
+            backgroundColor: '#ff568e', 
+            border: '1px solid #ff568e', 
+            borderRadius: '10px', 
+            padding: '5px 10px', 
+          }}>
+            <Link className="nav-link active" aria-current="page" to="signup" style={{ color: 'white', textDecoration: 'none' }}>
+              LogOut
+            </Link>
+          </div>
         </li>
       </ul>
     </div>
