@@ -60,13 +60,13 @@ export default function SignIn() {
     return "";
   }
   return (
-    <div className="card mb-3" style={{ background: "#2B2B31" }}>
+    <div className="card mb-3 mt-5" style={{ background: "#2B2B31" }}>
       <div className="container">
         <div className="text-center mt-3">
           <img src={logo} alt="Logo" />
         </div>
         <div className="card-body">
-          <form className="row g-3 flex-column" onSubmit={handleSubmit}>
+          <form className="row g-3 flex-column">
             <div className="col-auto">
               <input
                 type="email"
