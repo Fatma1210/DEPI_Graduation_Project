@@ -10,35 +10,32 @@ import { LifeLine } from 'react-loading-indicators';
 const API_URL = 'https://api.jikan.moe/v4/seasons/upcoming';
 
 const TitleSection = () => {
-  return (
-    <section
-      style={{
-        backgroundColor: "black",
-        height: "200px",
-        backgroundImage: `url(${
-          bgImage || "https://example.com/your-bg-image.jpg"
-        })`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        width: "100vw", // Ensure the section takes up the full viewport width
-        margin: 0,
-        padding: 0,
-        position: "relative",
-        left: "50%",
-        transform: "translateX(-50%)", // Center align the section horizontally
-      }}
-    >
-      <div className="container h-100 d-flex flex-column justify-content-center">
-        <div className="row w-100 align-items-center justify-content-between">
-          {/* Title aligned to the left */}
-          <div className="col-6 d-flex align-items-center">
-            <h2 className="text-light display-6 mb-0">Movies Catalog</h2>
-          </div>
-          <div className="col-6 d-flex justify-content-end align-items-center">
-            <ul
-              className="catalog d-inline-flex"
-              style={{ marginTop: "10px", listStyle: "none" }}
-            >
+    return (
+        <section
+          style={{
+            backgroundColor: "black",
+            height: "200px",
+            backgroundImage: `url(${
+              bgImage || "https://example.com/your-bg-image.jpg"
+            })`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            margin: 0,
+            padding: "0 15px", // Add horizontal padding for spacing
+            position: "relative",
+          }}
+        >
+          <div className="container h-100 d-flex flex-column justify-content-center">
+            <div className="row w-100 align-items-center justify-content-between">
+              {/* Title aligned to the left */}
+              <div className="col-6 d-flex align-items-center">
+                <h2 className="text-light display-6 mb-0">Anime Catalog</h2>
+              </div>
+              <div className="col-6 d-flex justify-content-end align-items-center">
+                <ul
+                  className="catalog d-inline-flex"
+                  style={{ marginTop: "10px", listStyle: "none" }}
+                >
               <li className="catalog__item">
                 <a href="/" className="text-light">
                   Home

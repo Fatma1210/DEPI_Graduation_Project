@@ -1,18 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Avoids overflow caused by padding */
+}
+
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%; /* Ensures the body is the full width */
+}
+
 .movie-card {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease;
-  }
-  
-  .movie-card img {
+    max-width: 100%; /* Prevents overflow */
+}
+
+.movie-card img {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 10px;
-  }
-  
-  .overlay {
+}
+
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -26,18 +38,25 @@
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     border-radius: 10px;
-  }
-  
-  .movie-card:hover .overlay {
+}
+
+.movie-card:hover .overlay {
     opacity: 1;
     visibility: visible;
-  }
-  
-  .play-icon {
+}
+
+.play-icon {
     font-size: 2rem;
     color: white;
-  }
-  
-  .rating {
+}
+
+.rating {
     color: #FF5599;
-  }
+}
+
+/* Additional styles to keep the layout clean */
+.container {
+    padding: 20px; /* Adjust padding as necessary */
+    max-width: 100vw; /* Prevent container from exceeding the viewport width */
+    overflow-x: hidden; /* Ensure no horizontal scrolling */
+}
