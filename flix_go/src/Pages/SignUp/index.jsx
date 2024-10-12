@@ -49,7 +49,7 @@ export default function SignUp() {
   }
 
   return (
-    <div className="card mb-3 mt-4" style={{ background: "#2B2B31" }}>
+    <div className="card signup-card mb-3 mt-4" style={{ background: "#2B2B31" }}>
       <div className="container">
         <div className="text-center mt-3">
           <img src={logo} alt="Logo" />
