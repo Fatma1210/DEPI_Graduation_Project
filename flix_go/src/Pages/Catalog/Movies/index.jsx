@@ -1,96 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './style.css'
-import '../../../App.css'
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./style.css";
 import { Link } from "react-router-dom";
-import bgImage from "../../../assets/gridview-bg.jpg"; // Import the same background image
+import './style.css';
 
-const API_URL =
-  "https://api.themoviedb.org/3/trending/all/day?api_key=c9fac173689f5f01ba1b0420f66d7093";
-
-// Title Section for Movies
-const TitleSection = () => {
-    return (
-        <section
-          style={{
-            backgroundColor: "black",
-            height: "200px",
-            backgroundImage: `url(${
-              bgImage || "https://example.com/your-bg-image.jpg"
-            })`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            margin: 0,
-            padding: "0 15px", // Add horizontal padding for spacing
-            position: "relative",
-          }}
-        >
-          <div className="container h-100 d-flex flex-column justify-content-center">
-            <div className="row w-100 align-items-center justify-content-between">
-              {/* Title aligned to the left */}
-              <div className="col-6 d-flex align-items-center">
-                <h2 className="text-light display-6 mb-0">Movies Catalog</h2>
-              </div>
-              <div className="col-6 d-flex justify-content-end align-items-center">
-                <ul
-                  className="catalog d-inline-flex"
-                  style={{ marginTop: "10px", listStyle: "none" }}
-                >
-                  <li className="catalog__item">
-                    <a href="/" className="text-light">
-                      Home
-                    </a>
-                  </li>
-                  <li className="catalog__item mx-2">
-                    <i className="fas fa-chevron-right text-light"></i>
-                  </li>
-                  <li className="catalog__item header__item--active text-light">
-                    Movies
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-        {/* Centered Buttons */}
-        <div className="d-flex justify-content-center mt-3">
-          <a
-            href="/movies"
-            className="btn me-3"
-            style={{
-              backgroundColor: "#FF5599",
-              borderRadius: "25px",
-            }}
-          >
-            Movies
-          </a>
-          <a
-            href="/series"
-            className="btn me-3"
-            style={{
-              backgroundColor: "#FF5599",
-              borderRadius: "25px",
-            }}
-          >
-            Series
-          </a>
-          <a
-            href="/anime"
-            className="btn"
-            style={{
-              backgroundColor: "#FF5599",
-              borderRadius: "25px",
-            }}
-          >
-            Anime
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-};
-
+const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=d7c0a70a1adb796f3cd7b050e54736e4&language=en-US&page=1";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -108,12 +22,70 @@ const Movies = () => {
 
   return (
     <div className="container my-5">
-      <TitleSection />
+      {/* Inline Header with left-aligned title and right-aligned breadcrumbs */}
+      <div>
+        <div className="background-container"> 
+          <div className='container'>
+            <div className='row h-100'>
+              <div className='col-12'>
+                <div className="contentt h-100 w-100 d-flex align-items-center justify-content-between">
+                  {/* Title on the left */}
+                  <h1 className='tittle'>Movies Catalog</h1>
+                  
+                  {/* Breadcrumbs on the right */}
+                  <ul className='d-flex list m-0 align-items-center'>
+                    <li className='l-design'>
+                      <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                      <i className="fa-solid fa-arrow-right mx-2"></i>
+                    </li>
+                    <li>Movies</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <div className='line'></div>
+      </div>
+
+      {/* Buttons for Movies, Series, and Anime */}
+      <div className="d-flex justify-content-center mt-3">
+        <a 
+          href="/movies" 
+          className="btn me-3" 
+          style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}
+        >
+          Movies
+        </a>
+        <a 
+          href="/series" 
+          className="btn me-3" 
+          style={{ backgroundColor: '#FF5599', borderRadius: '25px' }} 
+        >
+          Series
+        </a>
+        <a 
+          href="/anime" 
+          className="btn" 
+          style={{  
+            backgroundImage: 'linear-gradient(90deg, #ff55a5 0%, #ff5860 100%)', 
+            borderRadius: '25px'  }} 
+        >
+          Anime
+        </a>
+      </div>
+
       <hr />
       <div className="row">
-        {movies.map((movie) => (
+        {movies.length > 0 ? movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
-        ))}
+        )) : (
+          <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
+            <p>Loading...</p>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -123,7 +95,6 @@ const Movies = () => {
 const MovieCard = ({ movie }) => {
   return (
     <div className="col-md-2 mb-4 movie-card-container">
-      {/* Wrap the card inside a Link to navigate to the movie details */}
       <Link to={`/movies/${movie.id}`} className="text-decoration-none">
         <div className="card h-100 bg-dark text-light movie-card">
           <img
