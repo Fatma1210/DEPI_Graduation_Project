@@ -2,60 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import bgImage from '../../../assets/gridview-bg.jpg';
+import './style.css';
 
 const API_URL = 'https://www.episodate.com/api/most-popular?page=1';
-
-const TitleSection = () => {
-    return (
-        <section
-          style={{
-            backgroundColor: "black",
-            height: "200px",
-            backgroundImage: `url(${
-              bgImage || "https://example.com/your-bg-image.jpg"
-            })`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            margin: 0,
-            padding: "0 15px", // Add horizontal padding for spacing
-            position: "relative",
-          }}
-        >
-          <div className="container h-100 d-flex flex-column justify-content-center">
-            <div className="row w-100 align-items-center justify-content-between">
-              {/* Title aligned to the left */}
-              <div className="col-6 d-flex align-items-center">
-                <h2 className="text-light display-6 mb-0">Series Catalog</h2>
-              </div>
-              <div className="col-6 d-flex justify-content-end align-items-center">
-                <ul
-                  className="catalog d-inline-flex"
-                  style={{ marginTop: "10px", listStyle: "none" }}
-                >
-              <li className="catalog__item">
-                <a href="/" className="text-light">
-                  Home
-                </a>
-              </li>
-              <li className="catalog__item mx-2">
-                <i className="fas fa-chevron-right text-light"></i>
-              </li>
-              <li className="catalog__item header__item--active text-light">
-                Series
-              </li>
-            </ul>
-          </div>
-        </div>
-                <div className="d-flex justify-content-center mt-3">
-                    <Link to="/movies" className="btn me-3" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>Movies</Link>
-                    <Link to="/series" className="btn me-3" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>Series</Link>
-                    <Link to="/anime" className="btn" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>Anime</Link>
-                </div>
-            </div>
-        </section>
-    );
-};
 
 const Series = () => {
     const [series, setSeries] = useState([]);
@@ -86,7 +35,47 @@ const Series = () => {
 
     return (
         <div className="container my-5">
-            <TitleSection />
+            {/* Inline Header with left-aligned title and right-aligned breadcrumbs */}
+            <div>
+                <div className="background-container"> 
+                    <div className='container'>
+                        <div className='row h-100'>
+                            <div className='col-12'>
+                                <div className="contentt h-100 w-100 d-flex align-items-center justify-content-between">
+                                    {/* Title on the left */}
+                                    <h1 className='tittle'>Series Catalog</h1>
+                                    
+                                    {/* Breadcrumbs on the right */}
+                                    <ul className='d-flex list m-0 align-items-center'>
+                                        <li className='l-design'>
+                                            <Link to="/">Home</Link>
+                                        </li>
+                                        <li>
+                                            <i className="fa-solid fa-arrow-right mx-2"></i>
+                                        </li>
+                                        <li>Series</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div className='line'></div>
+            </div>
+
+            {/* Buttons for Movies, Series, and Anime */}
+            <div className="d-flex justify-content-center mt-3">
+                <Link to="/movies" className="btn me-3" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>
+                    Movies
+                </Link>
+                <Link to="/series" className="btn me-3" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>
+                    Series
+                </Link>
+                <Link to="/anime" className="btn" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>
+                    Anime
+                </Link>
+            </div>
+
             <hr />
 
             {/* Series grid (4 cards per row) */}
