@@ -21,7 +21,7 @@ const Movies = () => {
   }, []);
 
   return (
-    <div className="container my-5">
+    <div className="my-5">
       {/* Inline Header with left-aligned title and right-aligned breadcrumbs */}
       <div>
         <div className="background-container"> 
@@ -78,7 +78,7 @@ const Movies = () => {
       </div>
 
       <hr />
-      <div className="row">
+      <div className="container row">
         {movies.length > 0 ? movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         )) : (

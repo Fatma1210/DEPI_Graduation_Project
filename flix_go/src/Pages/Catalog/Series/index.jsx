@@ -27,14 +27,14 @@ const Series = () => {
 
     if (loading) {
         return (
-            <div className="text-center mt-5">
-                <h4 className="text-light">Loading...</h4>
+            <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
+                <p>Loading...</p>
             </div>
         );
     }
 
     return (
-        <div className="container my-5">
+        <div className="my-5">
             {/* Inline Header with left-aligned title and right-aligned breadcrumbs */}
             <div>
                 <div className="background-container"> 
@@ -79,9 +79,9 @@ const Series = () => {
             <hr />
 
             {/* Series grid (4 cards per row) */}
-            <div className="row">
+            <div className="container row">
                 {series.map(serie => (
-                    <div key={serie.id} className="col-md-2 mb-4">
+                    <div key={serie.id} className="col-md-2 mb-4 movie-card-container">
                         <Link 
                             to={`/series/${serie.id}`} 
                             state={{ 
@@ -92,9 +92,14 @@ const Series = () => {
                                 network: serie.network, 
                                 image: serie.image_thumbnail_path 
                             }}
+                            className="text-decoration-none"
                         >
                             <div className="card h-100 bg-dark text-light movie-card">
-                                <img src={serie.image_thumbnail_path} className="card-img-top" alt={serie.name} />
+                                <img 
+                                    src={serie.image_thumbnail_path} 
+                                    className="card-img-top" 
+                                    alt={serie.name} 
+                                />
                                 <div className="overlay">
                                     <i className="fas fa-play play-icon"></i>
                                 </div>

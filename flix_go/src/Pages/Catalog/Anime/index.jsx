@@ -22,7 +22,7 @@ const Anime = () => {
   }, []);
 
   return (
-    <div className="container my-5">
+    <div className="my-5">
       {/* Inline Header with left-aligned title and right-aligned breadcrumbs */}
       <div>
         <div className="background-container"> 
@@ -77,7 +77,7 @@ const Anime = () => {
       </div>
 
       <hr />
-      <div className="row">
+      <div className="container row">
         {anime.length > 0 ? anime.map(animeItem => (
           <AnimeCard key={animeItem.mal_id} anime={animeItem} />
         )) : (
