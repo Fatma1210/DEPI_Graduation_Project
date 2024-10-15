@@ -8,4 +8,5 @@
 body{
   background-color: var(--mainColor);
   color: white;
+  font-family: Ubuntu, sans-serif;
 }

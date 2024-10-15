@@ -14,7 +14,7 @@ let navLinks = [
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark fixed-top shadow" style={{ backgroundColor: "#2c2b31", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)" }}>
+    <nav className="navbar navbar-expand-lg navbar-dark  shadow" style={{ backgroundColor: "#2c2b31", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)" }}>
       <div className="container">
         <div style={{ width: '200px', height: '100%', backgroundColor: '#20282d', borderRadius: '10px' }} className="d-flex align-items-center justify-content-center">
           <Link className="navbar-brand" to="home">
