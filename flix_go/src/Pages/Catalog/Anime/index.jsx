@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import './style.css';
+import '../Movies/movies.css';
 import { LifeLine } from 'react-loading-indicators';
 
 const API_URL = 'https://api.jikan.moe/v4/seasons/upcoming';
@@ -30,10 +30,10 @@ const Anime = () => {
             <div className='row h-100'>
               <div className='col-12'>
                 <div className="contentt h-100 w-100 d-flex align-items-center justify-content-between">
-                  {/* Title on the left */}
+               
                   <h1 className='tittle'>Anime Catalog</h1>
                   
-                  {/* Breadcrumbs on the right */}
+                
                   <ul className='d-flex list m-0 align-items-center'>
                     <li className='l-design'>
                       <Link to="/">Home</Link>
@@ -77,7 +77,7 @@ const Anime = () => {
       </div>
 
       <hr />
-      <div className="container row">
+      <div className="container row ">
         {anime.length > 0 ? anime.map(animeItem => (
           <AnimeCard key={animeItem.mal_id} anime={animeItem} />
         )) : (

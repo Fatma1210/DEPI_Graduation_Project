@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import './style.css';
+import './movies.css';
 
 const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=d7c0a70a1adb796f3cd7b050e54736e4&language=en-US&page=1";
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { LifeLine } from 'react-loading-indicators'; // Import LifeLine component
-import './style.css'; // External CSS file for styling
+import './details.css'; // External CSS file for styling
 
 
 

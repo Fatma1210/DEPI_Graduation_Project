@@ -1,14 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Avoids overflow caused by padding */
-}
-
-html, body {
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    width: 100%; /* Ensures the body is the full width */
-}
-
 .movie-card {
     position: relative;
     border-radius: 10px;

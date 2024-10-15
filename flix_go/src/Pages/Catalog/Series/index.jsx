@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import './style.css';
+import '../Movies/movies.css';
 
 const API_URL = 'https://www.episodate.com/api/most-popular?page=1';
 
