@@ -1,83 +1,11 @@
-// Anime.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import bgImage from '../../../assets/gridview-bg.jpg'; // Import background image
 import { Link } from 'react-router-dom';
-import './style.css';
+import '../Movies/movies.css';
 import { LifeLine } from 'react-loading-indicators';
 
 const API_URL = 'https://api.jikan.moe/v4/seasons/upcoming';
-
-const TitleSection = () => {
-    return (
-        <section
-          style={{
-            backgroundColor: "black",
-            height: "200px",
-            backgroundImage: `url(${
-              bgImage || "https://example.com/your-bg-image.jpg"
-            })`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            margin: 0,
-            padding: "0 15px", // Add horizontal padding for spacing
-            position: "relative",
-          }}
-        >
-          <div className="container h-100 d-flex flex-column justify-content-center">
-            <div className="row w-100 align-items-center justify-content-between">
-              {/* Title aligned to the left */}
-              <div className="col-6 d-flex align-items-center">
-                <h2 className="text-light display-6 mb-0">Anime Catalog</h2>
-              </div>
-              <div className="col-6 d-flex justify-content-end align-items-center">
-                <ul
-                  className="catalog d-inline-flex"
-                  style={{ marginTop: "10px", listStyle: "none" }}
-                >
-              <li className="catalog__item">
-                <a href="/" className="text-light">
-                  Home
-                </a>
-              </li>
-              <li className="catalog__item mx-2">
-                <i className="fas fa-chevron-right text-light"></i>
-              </li>
-              <li className="catalog__item header__item--active text-light">
-                Anime
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="d-flex justify-content-center mt-3">
-          <a 
-            href="/movies" 
-            className="btn me-3" 
-            style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}
-          >
-            Movies
-          </a>
-          <a 
-            href="/series" 
-            className="btn me-3" 
-            style={{ backgroundColor: '#FF5599', borderRadius: '25px' }} 
-          >
-            Series
-          </a>
-          <a 
-            href="/anime" 
-            className="btn" 
-            style={{ backgroundColor: '#FF5599', borderRadius: '25px' }} 
-          >
-            Anime
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const Anime = () => {
   const [anime, setAnime] = useState([]);
@@ -85,8 +13,8 @@ const Anime = () => {
   useEffect(() => {
     axios.get(API_URL)
       .then(response => {
-        console.log(response.data); // Log the response for debugging
-        setAnime(response.data.data); // Adjust based on the actual structure
+        console.log(response.data);
+        setAnime(response.data.data);
       })
       .catch(error => {
         console.error("Error fetching the anime data", error);
@@ -94,15 +22,66 @@ const Anime = () => {
   }, []);
 
   return (
-    <div className="container my-5">
-      <TitleSection />
+    <div className="my-5">
+      {/* Inline Header with left-aligned title and right-aligned breadcrumbs */}
+      <div>
+        <div className="background-container"> 
+          <div className='container'>
+            <div className='row h-100'>
+              <div className='col-12'>
+                <div className="contentt h-100 w-100 d-flex align-items-center justify-content-between">
+               
+                  <h1 className='tittle'>Anime Catalog</h1>
+                  
+                
+                  <ul className='d-flex list m-0 align-items-center'>
+                    <li className='l-design'>
+                      <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                      <i className="fa-solid fa-arrow-right mx-2"></i>
+                    </li>
+                    <li>Anime</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <div className='line'></div>
+      </div>
+
+      {/* Buttons for Movies, Series, and Anime */}
+      <div className="d-flex justify-content-center mt-3">
+        <a 
+          href="/movies" 
+          className="btn me-3" 
+          style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}
+        >
+          Movies
+        </a>
+        <a 
+          href="/series" 
+          className="btn me-3" 
+          style={{ backgroundColor: '#FF5599', borderRadius: '25px' }} 
+        >
+          Series
+        </a>
+        <a 
+          href="/anime" 
+          className="btn" 
+          style={{ backgroundColor: '#FF5599', borderRadius: '25px' }} 
+        >
+          Anime
+        </a>
+      </div>
+
       <hr />
-      <div className="row">
+      <div className="container row ">
         {anime.length > 0 ? anime.map(animeItem => (
           <AnimeCard key={animeItem.mal_id} anime={animeItem} />
         )) : (
-            <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
-            {/* Replaced Loading text with LifeLine loading indicator */}
+          <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
             <LifeLine color="#FF5599" size="medium" text="Loading" textColor="#FF5599" />
           </div>
         )}
