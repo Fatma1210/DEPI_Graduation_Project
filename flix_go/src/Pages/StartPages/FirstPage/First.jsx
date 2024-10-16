@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 export default function FirstPage() {
     let navigate = useNavigate();
     const [displayText, setDisplayText] = useState('');
-    const fullText = "Grreetings! Join us on an unforgettable journey through the magic of movies!";
+    const fullText = "GGreetings! Join us on an unforgettable journey through the magic of movies!";
 
     useEffect(() => {
         let index = 0;

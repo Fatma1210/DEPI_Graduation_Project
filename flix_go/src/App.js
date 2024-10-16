@@ -20,9 +20,21 @@ function App() {
 
   const [userData, setUserData] = useState("");
   function saveDataUser() {
-    let encode_Jwt = localStorage.getItem("token");
-    let decode_Jwt = jwtDecode(encode_Jwt) ;
-    setUserData(decode_Jwt);
+    let encoded_Jwt = localStorage.getItem("token");
+  
+    // Check if token exists and is a valid string
+    if (encoded_Jwt && typeof encoded_Jwt === "string") {
+      try {
+        let decoded_Jwt = jwtDecode(encoded_Jwt);
+        setUserData(decoded_Jwt);
+      } catch (error) {
+        console.error("Invalid token", error);
+        setUserData(null); // Reset user data if token is invalid
+      }
+    } else {
+      console.error("Token not found or invalid");
+      setUserData(null); // Handle scenario when token is missing or invalid
+    }
   }
   function logOut() {
     localStorage.removeItem("token");
