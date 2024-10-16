@@ -6,7 +6,7 @@ import NavLinkcomp from './Navcomp/NavLinkcomp';
 
 let navLinks = [
   { name: "Home", path: "home" },
-  { name: "Catalog", path: "catalog" },
+  { name: "Catalog", path: "movies" },
   { name: "Pricing Plans", path: "pricingplans" },
   { name: "Privacy Policy", path: "privacypolicy" },
 

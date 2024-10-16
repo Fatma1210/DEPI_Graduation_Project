@@ -3,16 +3,13 @@ import "./App.css";
 import SignUp from "./Pages/SignUp";
 import Navbar from "./Pages/Navbar";
 import Home from "./Pages/Home/Home";
-import Catalog from "./Pages/Catalog";
-import { Movies, Series, Anime, DetailsMovies, DetailsSeries, DetailsAnime } from './Pages/Catalog'
+import Catalog, { Anime, DetailsAnime, DetailsMovies, DetailsSeries, Movies, Series } from "./Pages/Catalog";
 import Profile from "./Pages/Profile/Profile";
 import PricingPlans, { Form } from "./Pages/PricingPlans/PricingPlans";
-import { Route } from "react-router-dom";
-import { Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import AboutUs from "./Pages/AboutUs/AboutUs";
-import "./App.css";
 import { jwtDecode } from "jwt-decode";
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FirstPage from "./Pages/StartPages/FirstPage/First.jsx";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
@@ -22,11 +19,11 @@ import Notfound from "./Pages/PricingPlans/Component/Notfound.jsx/Index.jsx";
 
 function App() {
   let navigate = useNavigate();
-
   const [userData, setUserData] = useState("");
+
   function saveDataUser() {
     let encoded_Jwt = localStorage.getItem("token");
-  
+
     // Check if token exists and is a valid string
     if (encoded_Jwt && typeof encoded_Jwt === "string") {
       try {
@@ -41,30 +38,31 @@ function App() {
       setUserData(null); // Handle scenario when token is missing or invalid
     }
   }
+
   function logOut() {
     localStorage.removeItem("token");
     setUserData(null);
     navigate("/first");
   }
-  function ProtectedRoutes(props) {
+
+  function ProtectedRoutes({ children }) {
     if (localStorage.getItem("token") == null) {
-      return (<Navigate to={"/first"}/>) ;
+      return <Navigate to={"/first"} />;
     } else {
-      return props.children;
-}
-  }  
-  useEffect(() => { 
-    saveDataUser() ;
+      return children;
+    }
+  }
+
+  useEffect(() => {
+    saveDataUser();
   }, []);
+
   return (
-    <>  
-  <Navbar userData={userData} logOut={logOut}></Navbar> 
-      <div className="container">
+    <>
+      <Navbar userData={userData} logOut={logOut} />
+      <div >
         <Routes>
-          <Route
-            path="signin"
-            element={<SignIn saveDataUser={saveDataUser} />}
-          />
+          <Route path="signin" element={<SignIn saveDataUser={saveDataUser} />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="" element={<FirstPage />} />
           <Route path="first" element={<FirstPage />} />
@@ -72,7 +70,7 @@ function App() {
             path="home"
             element={
               <ProtectedRoutes>
-                <Home/>
+                <Home />
               </ProtectedRoutes>
             }
           />
@@ -81,6 +79,55 @@ function App() {
             element={
               <ProtectedRoutes>
                 <Catalog />
+              </ProtectedRoutes>
+            }
+          />
+          {/* Nested routes for movies, anime, and series */}
+          <Route
+            path="movies"
+            element={
+              <ProtectedRoutes>
+                <Movies />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="movies/:id" // Use dynamic routing for details
+            element={
+              <ProtectedRoutes>
+                <DetailsMovies />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="anime"
+            element={
+              <ProtectedRoutes>
+                <Anime />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="anime/:id" // Use dynamic routing for details
+            element={
+              <ProtectedRoutes>
+                <DetailsAnime />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="series"
+            element={
+              <ProtectedRoutes>
+                <Series />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="series/:id" // Use dynamic routing for details
+            element={
+              <ProtectedRoutes>
+                <DetailsSeries />
               </ProtectedRoutes>
             }
           />
@@ -107,8 +154,8 @@ function App() {
                 <AboutUs />
               </ProtectedRoutes>
             }
-          /> 
-              <Route
+          />
+          <Route
             path="privacypolicy"
             element={
               <ProtectedRoutes>
@@ -116,7 +163,7 @@ function App() {
               </ProtectedRoutes>
             }
           />
-              <Route
+          <Route
             path="subscription"
             element={
               <ProtectedRoutes>
@@ -124,7 +171,7 @@ function App() {
               </ProtectedRoutes>
             }
           />
-             <Route
+          <Route
             path="paymentform"
             element={
               <ProtectedRoutes>
@@ -132,10 +179,10 @@ function App() {
               </ProtectedRoutes>
             }
           />
-          
-          <Route path="*" element= {<Notfound/>} />
+          <Route path="*" element={<Notfound />} />
         </Routes>
-        {/* <Footer/> */}
+        {/* Uncomment the Footer component if needed */}
+        {/* <Footer /> */}
       </div>
     </>
   );

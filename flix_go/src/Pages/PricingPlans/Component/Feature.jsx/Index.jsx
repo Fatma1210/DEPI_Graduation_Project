@@ -1,7 +1,7 @@
 import React from "react";
 import "./Feature.css";
 import Data from "../Data.json";
-
+import {motion} from 'framer-motion'
 export default function Feature() {
   let Arr = Data;
   return (
@@ -19,7 +19,10 @@ export default function Feature() {
           {Arr.map((cards, index) => (
             <div className="col-lg-4 col-md-6" key={cards.index}>
               <div className="content me-5">
-                <div>
+                <motion.div
+                whileHover={{rotate:180 }}
+                transition={{ duration: 0.8 }}
+                >
                   <span className="icon">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +32,7 @@ export default function Feature() {
                       <path d={cards.icoone} class="cz-color-2696481"></path>
                     </svg>
                   </span>
-                </div>
+                </motion.div>
                 <div className="icontent">
                   <p className="minititle fw-normal">{cards.tittle}</p>
                   <p className=" newp ">{cards.desc}</p>
