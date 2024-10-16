@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
                         <h1 className='tittle'>Privacy Policy</h1>
                         <ul className='d-flex list m-0'>
                             <li className='l-design'>
-                              <Link>Home</Link>
+                              <Link to="/home">Home</Link>
                             </li>
                             <li>
                             <i class="fa-solid fa-arrow-right"></i>
