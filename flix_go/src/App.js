@@ -34,7 +34,7 @@ function App() {
           <Route path='aboutus' element={<AboutUs />} />
           <Route path='*' element={<h1>Not Found</h1>} />
           <Route path='signup' element={<SignUp />} />
-          {/* <Route path='signin' element={<SignIn />} /> */}
+          <Route path='signin' element={<SignIn />} />
         </Routes>
       </div>
     </>

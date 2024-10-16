@@ -66,7 +66,7 @@ export default function SignIn() {
           <img src={logo} alt="Logo" />
         </div>
         <div className="card-body">
-          <form className="row g-3 flex-column">
+          <form className="row g-3 flex-column" onSubmit={handleSubmit}>
             <div className="col-auto">
               <input
                 type="email"
