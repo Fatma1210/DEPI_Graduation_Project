@@ -27,13 +27,24 @@ export default function Movies() {
   };
 
   return (
-    <div className="container">
-        <h1>Recentlly Updated</h1>
+    <div className="container m-3">
+      <h1
+        className="m-3"
+        style={{
+          backgroundColor: '#ff568e',
+          padding: '10px',
+          borderRadius: '5px',
+          textAlign: 'center',
+          display: 'inline-block', // Keep it from stretching across the full width
+        }}
+      >
+        Recently Updated
+      </h1>
+
       <div className="row d-flex justify-content-around Movies">
         {error && <div className="error-message">{error}</div>}
         {movies.slice(0, 6).map((movie, index) => (
           <div className="col-md-4 col-sm-6 col-12 d-flex Movie g-4" key={index}>
-            
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title || "Movie Poster"}
@@ -45,7 +56,9 @@ export default function Movies() {
                 <i className="fa fa-star" aria-hidden="true" style={{ color: '#ff568e' }}></i>
                 {` ${movie.vote_average}`}
               </span>
-              <p className="text-White">{movie.overview.length > 100 ? movie.overview.slice(0, 100) + "..." : movie.overview}</p>
+              <p className="text-white">
+                {movie.overview.length > 100 ? movie.overview.slice(0, 100) + "..." : movie.overview}
+              </p>
             </div>
           </div>
         ))}
@@ -53,7 +66,9 @@ export default function Movies() {
       
       {/* Button in the middle to navigate to the catalog */}
       <div className="d-flex justify-content-center mt-5">
-        <button className="btn btn-outline-info text-white " onClick={handleNavigate}>To Catalog</button>
+        <button className="btn btn-outline-info text-white" onClick={handleNavigate}>
+          To Catalog
+        </button>
       </div>
     </div>
   );

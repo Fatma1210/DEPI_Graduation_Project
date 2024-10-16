@@ -6,6 +6,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import { useNavigate } from 'react-router-dom';
 import Movies from './Movies/Movies';
+import PricingPlans from '../PricingPlans/PricingPlans';
+import Feature from '../PricingPlans/Component/Feature.jsx/Index';
+import Footer from '../PricingPlans/Component/Footer.jsx/Index';
 
 
 export default function Home() {
@@ -80,6 +83,36 @@ export default function Home() {
         }} />
       </div>
      <Movies/>
+     <div style={{
+        position: 'relative', // Relative positioning for the parent
+        width: '100%', // Full width of the viewport
+        marginTop: '50px', // Space above the line
+      }}>
+        <div style={{
+          position: 'absolute', // Absolute positioning for the line
+          left: 0, // Start from the far left
+          right: 0, // End at the far right
+          borderTop: '1px solid #fe5870', // Color and thickness of the line
+          top: 0, // Position at the top of the div
+        }} />
+      </div>
+     <Feature/>
+     <div style={{
+        position: 'relative', // Relative positioning for the parent
+        width: '100%', // Full width of the viewport
+        marginTop: '50px', // Space above the line
+      }}>
+        <div style={{
+          position: 'absolute', // Absolute positioning for the line
+          left: 0, // Start from the far left
+          right: 0, // End at the far right
+          borderTop: '1px solid #fe5870', // Color and thickness of the line
+          top: 0, // Position at the top of the div
+        }} />
+      </div>
+     
+     
+     <Footer/>
     
     </div>
   );
