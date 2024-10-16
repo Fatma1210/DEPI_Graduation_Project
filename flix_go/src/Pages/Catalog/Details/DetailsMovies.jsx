@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { LifeLine } from 'react-loading-indicators'; // Import LifeLine component
 import './details.css'; // External CSS file for styling
+import {motion} from 'framer-motion'
 
 const API_KEY = "c9fac173689f5f01ba1b0420f66d7093"; // Movie API key
 const imgPath = (path) => `https://image.tmdb.org/t/p/w500${path}`; // Image base URL
@@ -30,11 +31,20 @@ export default function DetailsMovies() {
   return (
     <div className="movie-details-container">
       {details ? (
-        <div className="row my-5">
-          <div className="col-md-4">
+        <div
+         className="row my-5">
+          <motion.div
+          initial={{ x: -250 }}
+          animate={{ x: 1 }}
+          transition={{ duration: 0.999999, type:'spring' ,stiffness:50 }}
+          className="col-md-4">
             <img className="w-100 movie-poster" src={imgPath(details.poster_path)} alt={details.title} />
-          </div>
-          <div className="col-md-7 offset-md-1 movie-details-content">
+          </motion.div>
+          <motion.div
+          initial={{ y: -250 }}
+          animate={{ y: -10 }}
+          transition={{ duration: 0.9999, type:'spring' ,stiffness:100 }}
+           className="col-md-7 offset-md-1 movie-details-content overflow-hidden">
             <h1 className="movie-title">{details.title}</h1>
             <div className="movie-rating">
               <span className="stars">
@@ -45,10 +55,18 @@ export default function DetailsMovies() {
             <p className="movie-overview">{details.overview}</p>
             <p><strong>Release Date:</strong> {details.release_date}</p>
             <p><strong>Genres:</strong> {details.genres.map((genre) => genre.name).join(", ")}</p>
-            <Link to="/movies" className="btn back-to-list-btn" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>
+            <motion.div 
+                    className=""
+                    whileTap={{ scale: 0.999 }}
+                    whileHover={{ scale: 1.1, color:"black" }}
+                    transition={{ duration: 0.15 }}
+                    style={{width:'fit-content'}}>
+            
+            <Link to="/movies" className="btn back-to-list-btn w-100" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>
               Back to movies List
             </Link>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       ) : (
         <div className="vh-100 d-flex align-items-center justify-content-center flex-column">

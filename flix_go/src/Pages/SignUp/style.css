@@ -1,3 +1,8 @@
+.bggg {
+    background-image: url(../../../public/section__bg.jpg);
+    height: 100vh;
+    margin: 0;
+  }
 .signBody{
     background-image: url(https://flixgo.volkovdesign.com/main/img/bg/section__bg.jpg);
 }

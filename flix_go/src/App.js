@@ -5,7 +5,7 @@ import Navbar from "./Pages/Navbar";
 import Home from "./Pages/Home/Home";
 import Catalog, { Anime, DetailsAnime, DetailsMovies, DetailsSeries, Movies, Series } from "./Pages/Catalog";
 import Profile from "./Pages/Profile/Profile";
-import PricingPlans, { Form } from "./Pages/PricingPlans/PricingPlans";
+import PricingPlans from "./Pages/PricingPlans/PricingPlans";  // Ensure this path is correct
 import { Route, Routes, Navigate } from "react-router-dom";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import { jwtDecode } from "jwt-decode";
@@ -15,6 +15,7 @@ import FirstPage from "./Pages/StartPages/FirstPage/First.jsx";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import Subscription from "./Pages/Subscription/index.jsx";
 import Footer from "./Pages/PricingPlans/Component/Footer.jsx/Index.jsx";
+import Form from "./Pages/PricingPlans/Component/Form.jsx/Index";
 import Notfound from "./Pages/PricingPlans/Component/Notfound.jsx/Index.jsx";
 
 function App() {
@@ -24,18 +25,17 @@ function App() {
   function saveDataUser() {
     let encoded_Jwt = localStorage.getItem("token");
 
-    // Check if token exists and is a valid string
     if (encoded_Jwt && typeof encoded_Jwt === "string") {
       try {
         let decoded_Jwt = jwtDecode(encoded_Jwt);
         setUserData(decoded_Jwt);
       } catch (error) {
         console.error("Invalid token", error);
-        setUserData(null); // Reset user data if token is invalid
+        setUserData(null);
       }
     } else {
       console.error("Token not found or invalid");
-      setUserData(null); // Handle scenario when token is missing or invalid
+      setUserData(null);
     }
   }
 
@@ -82,7 +82,6 @@ function App() {
               </ProtectedRoutes>
             }
           />
-          {/* Nested routes for movies, anime, and series */}
           <Route
             path="movies"
             element={
@@ -92,7 +91,7 @@ function App() {
             }
           />
           <Route
-            path="movies/:id" // Use dynamic routing for details
+            path="movies/:id"
             element={
               <ProtectedRoutes>
                 <DetailsMovies />
@@ -108,7 +107,7 @@ function App() {
             }
           />
           <Route
-            path="anime/:id" // Use dynamic routing for details
+            path="anime/:id"
             element={
               <ProtectedRoutes>
                 <DetailsAnime />
@@ -124,7 +123,7 @@ function App() {
             }
           />
           <Route
-            path="series/:id" // Use dynamic routing for details
+            path="series/:id"
             element={
               <ProtectedRoutes>
                 <DetailsSeries />
@@ -172,7 +171,7 @@ function App() {
             }
           />
           <Route
-            path="paymentform"
+            path="formm"
             element={
               <ProtectedRoutes>
                 <Form />

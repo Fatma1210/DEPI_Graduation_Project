@@ -14,6 +14,10 @@ export default function Catalog() {
   return (
     <div>
       
+      <Movies />  {/* Render Movies component */}
+        <Series />  {/* Render Series component */}
+        <Anime />   {/* Render Anime component */}
+      
     </div>
   );
 }

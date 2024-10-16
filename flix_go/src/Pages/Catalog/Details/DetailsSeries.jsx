@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { LifeLine } from 'react-loading-indicators'; // Import LifeLine component
 import './details.css'; // External CSS file for styling
+import{motion} from 'framer-motion'
 
 
 
@@ -35,14 +36,22 @@ const DetailsSeries = () => {
     return (
         <div className="movie-details-container">
             <div className="row my-5">
-                <div className="col-md-4">
+                <motion.div 
+                initial={{ x: -250 }}
+                animate={{ x: 1 }}
+                transition={{ duration: 0.999999, type:'spring' ,stiffness:50 }}
+                className="col-md-4">
                     <img 
                         className="w-100 movie-poster" 
                         src={seriesDetails.image_thumbnail_path} 
                         alt={seriesDetails.name} 
                     />
-                </div>
-                <div className="col-md-7 offset-md-1 movie-details-content">
+                </motion.div>
+                <motion.div 
+                initial={{ y: -250 }}
+                animate={{ y: -10 }}
+                transition={{ duration: 0.9999, type:'spring' ,stiffness:100 }}
+                className="col-md-7 offset-md-1 movie-details-content overflow-hidden">
                     <h1 className="movie-title">{seriesDetails.name}</h1>
                     <div className="movie-rating">
                         <span className="stars">
@@ -54,10 +63,16 @@ const DetailsSeries = () => {
                     <p><strong>Start Date:</strong> {seriesDetails.start_date}</p>
                     <p><strong>Country:</strong> {seriesDetails.country}</p>
                     <p><strong>Network:</strong> {seriesDetails.network}</p>
-                    <Link to="/series" className="btn back-to-list-btn" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>
+                    <motion.div
+                    whileTap={{ scale: 0.999 }}
+                    whileHover={{ scale: 1.1, color:"black" }}
+                    transition={{ duration: 0.15 }}
+                    style={{width:'fit-content'}}>
+                    <Link to="/series" className="btn back-to-list-btn w-100" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>
                      Back to series List
-            </Link>
-                </div>
+            </Link></motion.div>
+                    
+                </motion.div>
             </div>
         </div>
     );
