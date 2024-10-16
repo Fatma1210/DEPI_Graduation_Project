@@ -85,7 +85,7 @@ const Movies = () => {
                     >
                       {" "}
                       <li className="l-design">
-                        <Link to="/">Home</Link>
+                        <Link to="/home">Home</Link>
                       </li>
                     </motion.div>
                     <motion.div
