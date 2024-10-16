@@ -3,9 +3,10 @@ import "./App.css";
 import SignUp from "./Pages/SignUp";
 import Navbar from "./Pages/Navbar";
 import Home from "./Pages/Home/Home";
-import Catalog from "./Pages/Catalog/Catalog";
+import Catalog from "./Pages/Catalog";
+import { Movies, Series, Anime, DetailsMovies, DetailsSeries, DetailsAnime } from './Pages/Catalog'
 import Profile from "./Pages/Profile/Profile";
-import PricingPlans from "./Pages/PricingPlans/PricingPlans";
+import PricingPlans, { Form } from "./Pages/PricingPlans/PricingPlans";
 import { Route } from "react-router-dom";
 import { Routes, Navigate } from "react-router-dom";
 import AboutUs from "./Pages/AboutUs/AboutUs";
@@ -14,6 +15,10 @@ import { jwtDecode } from "jwt-decode";
 import { useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import FirstPage from "./Pages/StartPages/FirstPage/First.jsx";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import Subscription from "./Pages/Subscription/index.jsx";
+import Footer from "./Pages/PricingPlans/Component/Footer.jsx/Index.jsx";
+import Notfound from "./Pages/PricingPlans/Component/Notfound.jsx/Index.jsx";
 
 function App() {
   let navigate = useNavigate();
@@ -46,7 +51,7 @@ function App() {
       return (<Navigate to={"/first"}/>) ;
     } else {
       return props.children;
-    }
+}
   }  
   useEffect(() => { 
     saveDataUser() ;
@@ -102,9 +107,35 @@ function App() {
                 <AboutUs />
               </ProtectedRoutes>
             }
+          /> 
+              <Route
+            path="privacypolicy"
+            element={
+              <ProtectedRoutes>
+                <PrivacyPolicy />
+              </ProtectedRoutes>
+            }
           />
-          <Route path="*" element={<h1>Not Found</h1>} />
+              <Route
+            path="subscription"
+            element={
+              <ProtectedRoutes>
+                <Subscription />
+              </ProtectedRoutes>
+            }
+          />
+             <Route
+            path="paymentform"
+            element={
+              <ProtectedRoutes>
+                <Form />
+              </ProtectedRoutes>
+            }
+          />
+          
+          <Route path="*" element= {<Notfound/>} />
         </Routes>
+        {/* <Footer/> */}
       </div>
     </>
   );

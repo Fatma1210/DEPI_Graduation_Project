@@ -4,7 +4,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import logo from "../../Images/logo.svg";
-import { useNavigate } from "react-router-dom";
+import { Await, useNavigate } from "react-router-dom";
 export default function SignIn({ saveDataUser }) {
   let navigate = useNavigate();
   const [loginData, setLoginData] = useState({
@@ -37,7 +37,7 @@ export default function SignIn({ saveDataUser }) {
       setfrontEndErrorMesage(validate.error.details);
     } else {
       axios
-        .post("http://hawas.runasp.net/api/v1/Login", loginData)
+        .post("http://hawas.runasp.net/api/v1/Login", loginData)  // Use relative URL
         .then((res) => { 
           const jwt = res.data.jwt;
           const user = res.data.user;
@@ -47,7 +47,7 @@ export default function SignIn({ saveDataUser }) {
           navigate("/home");
         })
         .catch((err) => {
-          setBackEndErrorMesage(err.response.data);
+            setBackEndErrorMesage(err.response.data);
         });
     }
   }

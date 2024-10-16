@@ -8,8 +8,7 @@ let navLinks = [
   { name: "Home", path: "home" },
   { name: "Catalog", path: "catalog" },
   { name: "Pricing Plans", path: "pricingplans" },
-  { name: "Profile", path: "profile" },
-  { name: "About Us", path: "aboutus" }
+  { name: "Privacy Policy", path: "privacypolicy" },
 
 ];
 
@@ -73,9 +72,9 @@ export default function Navbar({userData , logOut}) {
             borderRadius: '10px', 
             padding: '5px 10px', 
           }}>
-            <li className="nav-item" style={{ color: 'white', textDecoration: 'none' , cursor : "pointer"}} onClick={logOut}>
+            <Link className="active-link" style={{ color: 'white', textDecoration: 'none' , cursor : "pointer"}} onClick={logOut}>
               LogOut
-            </li>
+            </Link>
           </div>
         </li>)}
       </ul>

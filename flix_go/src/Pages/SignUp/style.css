@@ -1,5 +1,8 @@
+.signBody{
+    background-image: url(https://flixgo.volkovdesign.com/main/img/bg/section__bg.jpg);
+}
 
-.card{ 
+.signup-card{ 
     width: 40%;
     position: absolute;
     top: 20% !important;

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Catalog() {
+export default function Home() {
   return (
     <div>
-      catalog
+      
     </div>
   )
 }

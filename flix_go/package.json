@@ -4,8 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
-    "@react-three/drei": "^9.0.1",
-    "@react-three/fiber": "^8.17.10",
+    "@popperjs/core": "^2.11.8",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -16,6 +15,7 @@
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-loading-indicators": "^1.0.0",
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
     "three": "^0.169.0",
@@ -44,5 +44,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://hawas.runasp.net"
 }
