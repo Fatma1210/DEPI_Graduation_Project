@@ -13,11 +13,11 @@ let navLinks = [
 
 ];
 
-export default function Navbar() { 
+export default function Navbar({userData , logOut}) { 
   return ( 
 <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "#2c2b31" }}>
   <div className="container">
-    <div style={{ width: '200px', height: '100%', backgroundColor: '#20282d' ,      borderRadius: '10px',  }} className="d-flex align-items-center justify-content-center">
+    <div style={{ width: '200px', height: '100%', backgroundColor: '#20282d' , borderRadius: '10px',  }} className="d-flex align-items-center justify-content-center">
       <Link className="navbar-brand" to="home">
         <img src='https://flixgo.volkovdesign.com/main/img/logo.svg' alt="Logo" style={{ maxWidth: '100%', maxHeight: '100%' }} />
       </Link>
@@ -33,21 +33,22 @@ export default function Navbar() {
     >
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    <div className="collapse navbar-collapse" id="navbarSupportedContent"> 
+      {localStorage.getItem("token") != null&& (
       <ul className="navbar-nav mb-2 mb-lg-0 justify-content-center flex-grow-1">
         {navLinks.map((link, index) => (
           <NavLinkcomp key={index} link={link} />
         ))}
-      </ul>
+      </ul>)}
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center d-flex">
-        <li className="nav-item">
+       {localStorage.getItem("token") == null && ( <><li className="nav-item">
           <div style={{ 
             backgroundColor: '#ff568e', 
             border: '1px solid #ff568e', 
             borderRadius: '10px', 
             padding: '5px 10px' 
           }}>
-            <Link className="nav-link active" aria-current="page" to="signin" style={{ color: 'white', textDecoration: 'none' }}>
+            <Link className="nav-link active" aria-current="page" to="signin" style={{ color: 'white', textDecoration: 'none' }} >
               Sign In
             </Link>
           </div>
@@ -58,24 +59,25 @@ export default function Navbar() {
             border: '1px solid #ff568e', 
             borderRadius: '10px', 
             padding: '5px 10px', 
+            listStyle : 'none' ,
           }}>
             <Link className="nav-link active" aria-current="page" to="signup" style={{ color: 'white', textDecoration: 'none' }}>
               Sign Up
             </Link>
           </div>
-        </li> 
-        <li className="nav-item ms-3">
+        </li> </>)}
+     {localStorage.getItem("token") != null && (<li className="nav-item ms-3" >
           <div style={{ 
             backgroundColor: '#ff568e', 
             border: '1px solid #ff568e', 
             borderRadius: '10px', 
             padding: '5px 10px', 
           }}>
-            <Link className="nav-link active" aria-current="page" to="signup" style={{ color: 'white', textDecoration: 'none' }}>
+            <li className="nav-item" style={{ color: 'white', textDecoration: 'none' , cursor : "pointer"}} onClick={logOut}>
               LogOut
-            </Link>
+            </li>
           </div>
-        </li>
+        </li>)}
       </ul>
     </div>
   </div>

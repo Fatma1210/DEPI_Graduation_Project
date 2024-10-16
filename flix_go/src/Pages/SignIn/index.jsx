@@ -5,17 +5,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import logo from "../../Images/logo.svg";
 import { useNavigate } from "react-router-dom";
-export default function SignIn() { 
-  let navigate = useNavigate() ;
+export default function SignIn({ saveDataUser }) {
+  let navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
-  const [BackEnderrorMessage, setBackEndErrorMessage] = useState("");
-  const [frontEndErrorMessage , setFrontEndErrorMessage] = useState([])
-  const [check, setChecked] = useState(false);
-  const [userData , setUserData] = useState("") ;
-  const [rememberStatus , setRememberStatus] = useState(false) ;
+  const [backEndErrorMesage, setBackEndErrorMesage] = useState("");
+  const [frontEndErrorMesage, setfrontEndErrorMesage] = useState([]);
+  const [userData, setUserData] = useState("");
   function getUserData(e) {
     let data = { ...loginData };
     data[e.target.name] = e.target.value;
@@ -34,55 +32,44 @@ export default function SignIn() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    const validate = validation();
-    if (validate.error) { 
-      setFrontEndErrorMessage(validate.error.details);
-      console.log(validate.error.details);
+    let validate = validation();
+    if (validate.error) {
+      setfrontEndErrorMesage(validate.error.details);
     } else {
       axios
         .post("http://hawas.runasp.net/api/v1/Login", loginData)
-        .then((res) => {
-          console.log("Response:", res); 
+        .then((res) => { 
           const jwt = res.data.jwt;
-          console.log("JWT:", jwt); 
           const user = res.data.user;
-          setUserData(JSON.stringify(user)) ;
-          console.log(user) ;
+          setUserData(JSON.stringify(user));
           localStorage.setItem("token", jwt);
-          navigate('/home') ;
+          saveDataUser();
+          navigate("/home");
         })
         .catch((err) => {
-          console.log("Error:", err);
-          if (err.response) {
-            console.log("Server responded with:", err.response.data);
-            setBackEndErrorMessage("Login failed: " + err.response.data);
-          } else {
-            setBackEndErrorMessage("Login failed: " + err.message); 
-          }
+          setBackEndErrorMesage(err.response.data);
         });
     }
   }
-  
-  function testCheck() {
-    if (check){
-      localStorage.setItem("userData" , userData) ;
-      setRememberStatus(true) ;
-      return "checked";
-    } 
-    return "";
-  } 
-  return ( 
+  return (
     <div className="card mb-3" style={{ background: "#2b2b31" }}>
       <div className="container">
         <div className="text-center mt-3">
           <img src={logo} alt="Logo" />
         </div>
-        <div className="card-body"> 
-        {BackEnderrorMessage.length ? (
-      <h1 className="alert alert-danger h6">{BackEnderrorMessage}</h1>
-    ) : (
-      <></>
-    )}{" "}
+        <div className="card-body">
+          {backEndErrorMesage.length ? (
+            <h6 className="alert alert-danger">{backEndErrorMesage}</h6>
+          ) : (
+            <></>
+          )}
+          {""}
+          {frontEndErrorMesage.length > 0 &&
+            frontEndErrorMesage.map((error, index) => (
+              <h6 key={index} className="alert alert-danger">
+                {error.message}
+              </h6>
+            ))}
           <form className="row g-3 flex-column" onSubmit={handleSubmit}>
             <div className="col-auto">
               <input
@@ -91,8 +78,7 @@ export default function SignIn() {
                 className="form-control"
                 placeholder="Email"
                 onChange={getUserData}
-              /> 
-   
+              />
             </div>
             <div className="col-auto">
               <input
@@ -105,29 +91,14 @@ export default function SignIn() {
             </div>
             <div className="col-auto">
               <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckChecked"
-                  style={{ backgroundColor: "#ff568e" }}
-                  onChange={() => {
-                    setChecked(!check);
-                    testCheck();
-                  }}
-                />
-                <label
-                  className="form-check-label d-block"
-                  htmlFor="flexCheckChecked"
-                  style={{ color: "white" ,borderColor: "#2b2b31 !important" }}
-                >
-                  Remember me
-                </label>
                 <div
                   className="col-auto d-flex justify-content-center"
                   style={{ color: "#ff568e !important" }}
                 >
-                  <button type="submit" className="btn btn-outline btn-lg">
+                  <button
+                    type="submit"
+                    className="btn btn-outline btn-lg text-white"
+                  >
                     Sign In
                   </button>
                 </div>
