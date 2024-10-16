@@ -99,7 +99,7 @@ const Anime = () => {
                     >
                       {" "}
                       <li className="l-design">
-                        <Link to="/home">Home</Link>
+                        <Link to="/">Home</Link>
                       </li>
                     </motion.div>
                     <motion.div
@@ -229,14 +229,22 @@ const Anime = () => {
 
       <hr />
       <div className="container  ">
-      <div className="row">        {anime.length > 0 ? anime.map(animeItem => (
-          <AnimeCard key={animeItem.mal_id} anime={animeItem} />
-        )) : (
+      <div className="row">       
+      {loading ? (
           <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
             <LifeLine color="#FF5599" size="medium" text="Loading" textColor="#FF5599" />
           </div>
+        ) : currentAnime.length > 0 ? (
+          currentAnime.map(animeItem => (
+            <AnimeCard key={animeItem.mal_id} anime={animeItem} />
+          ))
+        ) : (
+          <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
+            <p>No anime found with the selected filters.</p>
+          </div>
         )}
-      </div></div>
+      </div>
+      </div>
       {/* Pagination */}
       <div className="d-flex justify-content-center mt-4">
         <ul className="pagination">

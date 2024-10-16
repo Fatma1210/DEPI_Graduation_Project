@@ -107,7 +107,7 @@ function App() {
             }
           />
           <Route
-            path="anime/:id"
+            path="anime/:mal_id"
             element={
               <ProtectedRoutes>
                 <DetailsAnime />

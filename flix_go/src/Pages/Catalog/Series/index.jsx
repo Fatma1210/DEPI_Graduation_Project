@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import '../Movies/movies.css';
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const API_URL = 'https://www.episodate.com/api/most-popular?page=';
 
@@ -97,41 +97,40 @@ const Series = () => {
                                 <div className="contentt h-100 w-100 d-flex align-items-center justify-content-between">
                                     {/* Title on the left */}
                                     <motion.div
-                    initial={{ y: -250 }}
-                    animate={{ y: -10 }}
-                    transition={{ duration: 0.9999,type:'spring' ,stiffness:120 }}
-                  >
-                    <h1 className="tittle">Series Catalog</h1>
-                  </motion.div>
+                                        initial={{ y: -250 }}
+                                        animate={{ y: -10 }}
+                                        transition={{ duration: 0.9999, type: 'spring', stiffness: 120 }}
+                                    >
+                                        <h1 className="tittle">Series Catalog</h1>
+                                    </motion.div>
                                     
                                     {/* Breadcrumbs on the right */}
                                     <ul className='d-flex list m-0 align-items-center'>
-                                    <motion.div
-                      initial={{ y: -250 }}
-                      animate={{ y: -10 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {" "}
-                      <li className="l-design">
-                        <Link to="/home">Home</Link>
-                      </li>
-                    </motion.div>
-                    <motion.div
-                      initial={{ y: -250 }}
-                      animate={{ y: -10 }}
-                      transition={{ duration: 0.7 }}
-                    >
-                      <li>
-                        <i className="fa-solid fa-arrow-right mx-2"></i>
-                      </li>
-                    </motion.div>
-                    <motion.div
-                      initial={{ y: -250 }}
-                      animate={{ y: -10 }}
-                      transition={{ duration: 0.9 }}
-                    >
-                      <li>Series</li>
-                    </motion.div>
+                                        <motion.div
+                                            initial={{ y: -250 }}
+                                            animate={{ y: -10 }}
+                                            transition={{ duration: 0.5 }}
+                                        >
+                                            <li className="l-design">
+                                                <Link to="/home">Home</Link>
+                                            </li>
+                                        </motion.div>
+                                        <motion.div
+                                            initial={{ y: -250 }}
+                                            animate={{ y: -10 }}
+                                            transition={{ duration: 0.7 }}
+                                        >
+                                            <li>
+                                                <i className="fa-solid fa-arrow-right mx-2"></i>
+                                            </li>
+                                        </motion.div>
+                                        <motion.div
+                                            initial={{ y: -250 }}
+                                            animate={{ y: -10 }}
+                                            transition={{ duration: 0.9 }}
+                                        >
+                                            <li>Series</li>
+                                        </motion.div>
                                     </ul>
                                 </div>
                             </div>
@@ -142,70 +141,60 @@ const Series = () => {
             </div>
             {/* Buttons for Movies, Series, and Anime */}
             <div className="d-flex justify-content-center mt-3">
-            <motion.div
-          style={{ width: "300px" }}
-          initial={{ y: -250 }}
-          animate={{ y: -1 }}
-          transition={{ duration: 0.5555 }}
-          whileTap={{ scale: 0.9 }}
-          whileHover={{ scale: 1.1,color:"black" }}
-          
-          
-        >
-          <Link
-            to="/movies"
-            className=" btn w-100 me-3"
-            style={{ backgroundColor: "#FF5599", borderRadius: "25px" }}
-          >
-            Movies
-          </Link>{" "}
-        </motion.div>
+                <motion.div
+                    style={{ width: "300px" }}
+                    initial={{ y: -250 }}
+                    animate={{ y: -1 }}
+                    transition={{ duration: 0.5555 }}
+                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1, color: "black" }}
+                >
+                    <Link
+                        to="/movies"
+                        className="btn w-100 me-3"
+                        style={{ backgroundColor: "#FF5599", borderRadius: "25px" }}
+                    >
+                        Movies
+                    </Link>{" "}
+                </motion.div>
 
+                <motion.div
+                    style={{ width: "300px", marginRight: "20px", marginLeft: "20px" }}
+                    initial={{ y: -250 }}
+                    animate={{ y: -1 }}
+                    transition={{ duration: 0.7777 }}
+                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1, color: "black" }}
+                >
+                    <Link
+                        to="/series"
+                        className="btn w-100 me-3"
+                        style={{ backgroundColor: "#FF5599", borderRadius: "25px"  }}
+                    >
+                        Series
+                    </Link>{" "}
+                </motion.div>
 
-
-        <motion.div
-          style={{ width: "300px" ,marginRight:"20px",marginLeft:"20px" }}
-          initial={{ y: -250 }}
-          animate={{ y: -1 }}
-          transition={{ duration: 0.7777 }}
-          whileTap={{ scale: 0.9 }}
-          whileHover={{ scale: 1.1,color:"black" }}
-
-          
-        >
-          <Link
-            to="/series"
-            className=" btn w-100 me-3"
-            style={{ backgroundColor: "#FF5599", borderRadius: "25px"  }}
-          >
-            series
-          </Link>{" "}
-        </motion.div>
-
-
-        <motion.div
-        initial={{ y: -250 }}
-        animate={{ y: -1 }}
-        transition={{ duration: 0.9999 }}
-          style={{ width: "300px" }}
-          whileTap={{ scale: 0.9 }}
-          whileHover={{ scale: 1.1 ,color:"black"}}
-          
-          
-        >
-          <Link
-            to="/anime"
-            className=" btn w-100 me-3"
-            style={{ backgroundColor: "#FF5599", borderRadius: "25px" }}
-          >
-            anime
-          </Link>{" "}
-        </motion.div>
+                <motion.div
+                    initial={{ y: -250 }}
+                    animate={{ y: -1 }}
+                    transition={{ duration: 0.9999 }}
+                    style={{ width: "300px" }}
+                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1, color: "black" }}
+                >
+                    <Link
+                        to="/anime"
+                        className="btn w-100 me-3"
+                        style={{ backgroundColor: "#FF5599", borderRadius: "25px" }}
+                    >
+                        Anime
+                    </Link>{" "}
+                </motion.div>
             </div>
 
-
-{/* Filter options */}
-<div className="d-flex justify-content-end align-items-center mt-3">
+            {/* Filter options */}
+            <div className="d-flex justify-content-end align-items-center mt-3">
                 <div className="d-flex align-items-center me-2">
                     <select name="country" className="form-select me-2 custom-dropdown" value={filter.country} onChange={handleFilterChange}>
                         <option value="">Select Country</option>
@@ -229,63 +218,73 @@ const Series = () => {
                         <option value="Ongoing">Ongoing</option>
                         <option value="Upcoming">Upcoming</option>
                     </select>
-
-                    
                 </div>
                 <button className="btn custom-btn me-5" onClick={filterSeries}>Filter</button>
             </div>
 
             <hr />
             {/* Series grid (4 cards per row) */}
-            <div className="container ">
-                <div className="row">                {series.map(serie => (
-                    <motion.div
-                    whileHover={{scale:1.1}}
-                     key={serie.id} className="col-md-2 mb-4 movie-card-container">
-                        <Link 
-                            to={`/series/${serie.id}`} 
-                            state={{ 
-                                name: serie.name, 
-                                permalink: serie.permalink, 
-                                start_date: serie.start_date, 
-                                country: serie.country, 
-                                network: serie.network, 
-                                image: serie.image_thumbnail_path 
-                            }}
-                            className="text-decoration-none"
-                        >
-                            <div className="card h-100 bg-dark text-light movie-card">
-                                <img 
-                                    src={serie.image_thumbnail_path} 
-                                    className="card-img-top" 
-                                    alt={serie.name} 
-                                />
-                                <div className="overlay">
-                                    <i className="fas fa-play play-icon"></i>
-                                </div>
-                                <div className="card-body">
-                                    <h5 className="card-title">{serie.name}</h5>
-                                    <p className="card-text">{serie.status}</p>
-                                </div>
+            <div className="container">
+                <div className="row">                
+                    {filteredSeries.length > 0 ? (
+                        filteredSeries.map(serie => (
+                            <div key={serie.id} className="col-md-2 mb-4 movie-card-container">
+                                <motion.div whileHover={{ scale: 1.1 }}>
+                                    <Link 
+                                        to={`/series/${serie.id}`} 
+                                        state={{ 
+                                            name: serie.name, 
+                                            permalink: serie.permalink, 
+                                            start_date: serie.start_date, 
+                                            country: serie.country, 
+                                            network: serie.network, 
+                                            image: serie.image_thumbnail_path 
+                                        }}
+                                        className="text-decoration-none"
+                                    >
+                                        <div className="card h-100 bg-dark text-light movie-card">
+                                            <img 
+                                                src={serie.image_thumbnail_path} 
+                                                className="card-img-top" 
+                                                alt={serie.name} 
+                                            />
+                                            <div className="overlay">
+                                                <i className="fas fa-play play-icon"></i>
+                                            </div>
+                                            <div className="card-body">
+                                                <p className="card-title text-center m-0 mt-2">
+                                                    {serie.name}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </motion.div>
                             </div>
-                        </Link>
-                    </motion.div>
-                ))}</div>
+                        ))
+                    ) : (
+                        <p>No series found</p>
+                    )}
+                </div>
             </div>
-            {/* Pagination controls */}
-            <nav aria-label="...">
-                <ul className="pagination pagination-lg my-5 d-flex justify-content-center">
-                    {generatePaginationNumbers().map((num) => (
-                        <li
-                            key={num}
-                            className={`page-item ${currentPage === num ? 'active' : ''}`}
-                            onClick={() => handlePageChange(num)}
-                        >
-                            <span className="page-link bg-transparent">{num}</span>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
+
+            {/* Pagination */}
+            <div className="d-flex justify-content-center align-items-center my-4">
+                <button className="btn custom-btn" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                    &lt;
+                </button>
+                {generatePaginationNumbers().map(page => (
+                    <button 
+                        key={page} 
+                        className={`btn mx-2 ${currentPage === page ? 'active' : ''}`} 
+                        onClick={() => handlePageChange(page)}
+                    >
+                        {page}
+                    </button>
+                ))}
+                <button className="btn custom-btn" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                    &gt;
+                </button>
+            </div>
         </div>
     );
 };
