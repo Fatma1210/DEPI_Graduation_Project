@@ -1,5 +1,5 @@
 
-.signin-card{ 
+.card{ 
     width: 40%;
     position: absolute;
     top: 30% !important;
@@ -7,7 +7,6 @@
     border-top-color: #ff568e !important;
 
 } 
-button{
-    color: #2b2b13 !important;
+.btn{
     background-color: #ff568e !important;
 }

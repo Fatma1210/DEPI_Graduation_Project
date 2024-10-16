@@ -3,7 +3,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 87vh;
   width: 100%;
   position: relative;
   display: flex;
@@ -45,7 +45,7 @@
 .etittle {
   position: relative;
   background-image: -webkit-linear-gradient(0deg, #ff55a5 0%, #ff5860 100%);
-  -webkit-background-clip: text;
+   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #ff5860;
   line-height: 100%;

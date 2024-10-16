@@ -1,5 +1,11 @@
+.custom-card {
+    background-color: #29292e; /* Set the desired color */
+    color: white; /* Change text color for better readability */
+}
+.card-title {
+    color : #FF5598;
+}
 .background-container {
-    background-image: url('/public/section__bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -7,10 +13,8 @@
     width: 100%;
     position: relative;
     display: flex;
-  /* margin-top: 75px; */
+
   }
-
-
   .contentt{
     color: white;
     align-items: center;
@@ -20,7 +24,6 @@
     font-size: 42px;
     font-weight: 300;
   }
-
   .list{
     color: #C5C5C5;
     list-style: none;
@@ -44,3 +47,16 @@ li{
     height: 3px;
     background: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%)
 }
+
+.buttonn {
+    color: white;
+    background: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+    width: 100%;
+    height: 50px;
+  }
+  
+  .buttonn:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+  }
+  

@@ -1,5 +1,4 @@
 .background-container {
-    background-image: url('/public/section__bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -7,10 +6,8 @@
     width: 100%;
     position: relative;
     display: flex;
-  /* margin-top: 75px; */
+
   }
-
-
   .contentt{
     color: white;
     align-items: center;
@@ -20,7 +17,6 @@
     font-size: 42px;
     font-weight: 300;
   }
-
   .list{
     color: #C5C5C5;
     list-style: none;
@@ -43,4 +39,12 @@ li{
 .line{
     height: 3px;
     background: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%)
+}
+
+.section__text {
+  margin: 30px !important; 
+}
+
+.section__list li {
+  margin: 20px !important; 
 }

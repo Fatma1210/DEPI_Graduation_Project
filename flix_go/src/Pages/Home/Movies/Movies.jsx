@@ -23,7 +23,7 @@ export default function Movies() {
 
   // Function to handle button click for navigation
   const handleNavigate = () => {
-    navigate("/movies"); // Navigate to the "movies" catalog
+    navigate("/catalog"); // Navigate to the "movies" catalog
   };
 
   return (

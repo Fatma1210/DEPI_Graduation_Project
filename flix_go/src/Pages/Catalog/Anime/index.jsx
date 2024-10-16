@@ -77,15 +77,16 @@ const Anime = () => {
       </div>
 
       <hr />
-      <div className="container row ">
-        {anime.length > 0 ? anime.map(animeItem => (
+      <div className="container  ">
+      <div className="row">        {anime.length > 0 ? anime.map(animeItem => (
           <AnimeCard key={animeItem.mal_id} anime={animeItem} />
         )) : (
           <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
             <LifeLine color="#FF5599" size="medium" text="Loading" textColor="#FF5599" />
           </div>
         )}
-      </div>
+      </div></div>
+
     </div>
   );
 };

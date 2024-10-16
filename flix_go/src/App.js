@@ -1,38 +1,141 @@
 import SignIn from "./Pages/SignIn";
-import './App.css';
+import "./App.css";
 import SignUp from "./Pages/SignUp";
 import Navbar from "./Pages/Navbar";
 import Home from "./Pages/Home/Home";
 import Catalog from "./Pages/Catalog";
 import { Movies, Series, Anime, DetailsMovies, DetailsSeries, DetailsAnime } from './Pages/Catalog'
 import Profile from "./Pages/Profile/Profile";
-import PricingPlans from "./Pages/PricingPlans/PricingPlans";
-import { Route, Routes } from "react-router-dom";
+import PricingPlans, { Form } from "./Pages/PricingPlans/PricingPlans";
+import { Route } from "react-router-dom";
+import { Routes, Navigate } from "react-router-dom";
 import AboutUs from "./Pages/AboutUs/AboutUs";
+import "./App.css";
+import { jwtDecode } from "jwt-decode";
+import { useState , useEffect} from "react";
+import { useNavigate } from "react-router-dom";
+import FirstPage from "./Pages/StartPages/FirstPage/First.jsx";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import Subscription from "./Pages/Subscription/index.jsx";
+import Footer from "./Pages/PricingPlans/Component/Footer.jsx/Index.jsx";
+import Notfound from "./Pages/PricingPlans/Component/Notfound.jsx/Index.jsx";
 
 function App() {
+  let navigate = useNavigate();
+
+  const [userData, setUserData] = useState("");
+  function saveDataUser() {
+    let encoded_Jwt = localStorage.getItem("token");
+  
+    // Check if token exists and is a valid string
+    if (encoded_Jwt && typeof encoded_Jwt === "string") {
+      try {
+        let decoded_Jwt = jwtDecode(encoded_Jwt);
+        setUserData(decoded_Jwt);
+      } catch (error) {
+        console.error("Invalid token", error);
+        setUserData(null); // Reset user data if token is invalid
+      }
+    } else {
+      console.error("Token not found or invalid");
+      setUserData(null); // Handle scenario when token is missing or invalid
+    }
+  }
+  function logOut() {
+    localStorage.removeItem("token");
+    setUserData(null);
+    navigate("/first");
+  }
+  function ProtectedRoutes(props) {
+    if (localStorage.getItem("token") == null) {
+      return (<Navigate to={"/first"}/>) ;
+    } else {
+      return props.children;
+}
+  }  
+  useEffect(() => { 
+    saveDataUser() ;
+  }, []);
   return (
-    <>
-      <Navbar />
+    <>  
+  <Navbar userData={userData} logOut={logOut}></Navbar> 
       <div className="container">
         <Routes>
-          <Route path='' element={<Home />} />
-          <Route path='home' element={<Home />} />
-          <Route path='catalog' element={<Catalog />} />
-          <Route path="movies" element={<Movies />} />
-          <Route path="series" element={<Series />} />
-          <Route path="anime" element={<Anime />} />
-          <Route path="/" element={<Movies />} />
-          <Route path="/movies/:id" element={<DetailsMovies />} />
-          <Route path="/series/:id" element={<DetailsSeries />} />
-          <Route path="/anime/:mal_id" element={<DetailsAnime />} />
-          <Route path='profile' element={<Profile />} />
-          <Route path='pricingplans' element={<PricingPlans />} />
-          <Route path='aboutus' element={<AboutUs />} />
-          <Route path='*' element={<h1>Not Found</h1>} />
-          <Route path='signup' element={<SignUp />} />
-          <Route path='signin' element={<SignIn />} />
+          <Route
+            path="signin"
+            element={<SignIn saveDataUser={saveDataUser} />}
+          />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="" element={<FirstPage />} />
+          <Route path="first" element={<FirstPage />} />
+          <Route
+            path="home"
+            element={
+              <ProtectedRoutes>
+                <Home/>
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="catalog"
+            element={
+              <ProtectedRoutes>
+                <Catalog />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoutes>
+                <Profile />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="pricingplans"
+            element={
+              <ProtectedRoutes>
+                <PricingPlans />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="aboutus"
+            element={
+              <ProtectedRoutes>
+                <AboutUs />
+              </ProtectedRoutes>
+            }
+          /> 
+              <Route
+            path="privacypolicy"
+            element={
+              <ProtectedRoutes>
+                <PrivacyPolicy />
+              </ProtectedRoutes>
+            }
+          />
+              <Route
+            path="subscription"
+            element={
+              <ProtectedRoutes>
+                <Subscription />
+              </ProtectedRoutes>
+            }
+          />
+             <Route
+            path="paymentform"
+            element={
+              <ProtectedRoutes>
+                <Form />
+              </ProtectedRoutes>
+            }
+          />
+          
+          <Route path="*" element= {<Notfound/>} />
         </Routes>
+        {/* <Footer/> */}
       </div>
     </>
   );

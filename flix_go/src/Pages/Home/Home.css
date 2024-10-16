@@ -45,3 +45,12 @@
     height: 100%;
   }
   
+.Movie{
+    gap: 10px !important;
+    height: 400px;
+    overflow: hidden;
+}
+.Movies{
+    gap: 15px !important;
+}
+  

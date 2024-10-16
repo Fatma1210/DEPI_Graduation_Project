@@ -1,14 +1,17 @@
 import React from "react";
 import "./Cards.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 export default function Cards() {
-  
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate('/form'); 
+    navigate("/paymentform");
   };
-  
+
+  const navRegister =()=>{
+    navigate("/signup");
+  }
+
   return (
     <div className="section">
       <div className="container">
@@ -26,7 +29,7 @@ export default function Cards() {
                 <li className="l-design">Desktop Only</li>
                 <li className="l-design">Limited Support</li>
               </ul>
-              <button className=" buttonn btn ">REGISTER</button>
+              <button onClick={navRegister} className=" buttonn btn ">REGISTER</button>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 ">
@@ -42,7 +45,9 @@ export default function Cards() {
                 <li className="l-design">TV & Desktop</li>
                 <li className="l-design">24/7 Support</li>
               </ul>
-              <button onClick={handleNavigate} className=" buttonn btn ">CHOOSE PLAN</button>
+              <button onClick={handleNavigate} className=" buttonn btn ">
+                CHOOSE PLAN
+              </button>
             </div>
           </div>
           <div className="col-lg-4 col-md-6">
@@ -58,7 +63,9 @@ export default function Cards() {
                 <li className="l-design">Any Device</li>
                 <li className="l-design">24/7 Support</li>
               </ul>
-              <button onClick={handleNavigate} className=" buttonn btn ">CHOOSE PLAN</button>
+              <button onClick={handleNavigate} className=" buttonn btn ">
+                CHOOSE PLAN
+              </button>
             </div>
           </div>
         </div>
