@@ -27,7 +27,7 @@ export default function DetailsAnime() {
   }, [mal_id]);
 
   return (
-    <div className="movie-details-container">
+    <div className="movie-details-container ">
       {details ? (
         <div className="row my-5">
           <div className="col-md-4">

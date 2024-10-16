@@ -11,7 +11,7 @@ export default function Form() {
   return (
     <div>
       <div className="card-contt d-flex justify-content-center">
-        <div className="cardddd mb-3 w-25" style={{ background: "#28282D" }}>
+        <div className="cardddd  w-25" style={{ background: "#28282D" }}>
           <div className="container p-3">
             <div className="text-center mt-3 d-flex justify-content-between">
             

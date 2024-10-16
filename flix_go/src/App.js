@@ -10,13 +10,14 @@ import PricingPlans from "./Pages/PricingPlans/PricingPlans";
 import { Route, Routes } from "react-router-dom";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import Form from "./Pages/PricingPlans/Component/Form.jsx/Index";
+import Notfound from "./Pages/PricingPlans/Component/Notfound.jsx/Index"
 
 
 function App() {
   return (
     <>
       <Navbar />
-      <div className="container">
+      <div className="">
         <Routes>
           <Route path='' element={<Home />} />
           <Route path='home' element={<Home />} />
@@ -32,7 +33,7 @@ function App() {
           <Route path='pricingplans' element={<PricingPlans/>} />
           <Route path="/formm" element={<Form />} />
           <Route path='aboutus' element={<AboutUs />} />
-          <Route path='*' element={<h1>Not Found</h1>} />
+          <Route path='*' element={<Notfound/>} />
           <Route path='signup' element={<SignUp />} />
           <Route path='signin' element={<SignIn />} />
         </Routes>

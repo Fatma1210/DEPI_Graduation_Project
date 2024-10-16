@@ -1,6 +1,7 @@
 import React from 'react'
 import './Header.css' ;
 import { Link } from 'react-router-dom';
+import Home from '../../../Home/Home'
 
 
 
@@ -15,7 +16,7 @@ export default function Header() {
                         <h1 className='tittle'>pricing plans</h1>
                         <ul className='d-flex list m-0'>
                             <li className='l-design'>
-                              <Link>Home</Link>
+                            <Link to="/home">Home</Link>
                             </li>
                             <li>
                             <i class="fa-solid fa-arrow-right"></i>

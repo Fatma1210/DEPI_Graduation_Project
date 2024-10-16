@@ -9,7 +9,6 @@ const API_URL = 'https://www.episodate.com/api/most-popular?page=1';
 const Series = () => {
     const [series, setSeries] = useState([]);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         const fetchSeries = async () => {
             try {
@@ -21,10 +20,8 @@ const Series = () => {
                 setLoading(false);
             }
         };
-
         fetchSeries();
     }, []);
-
     if (loading) {
         return (
             <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
@@ -32,7 +29,6 @@ const Series = () => {
             </div>
         );
     }
-
     return (
         <div className="my-5">
             {/* Inline Header with left-aligned title and right-aligned breadcrumbs */}
@@ -62,7 +58,6 @@ const Series = () => {
                 </div> 
                 <div className='line'></div>
             </div>
-
             {/* Buttons for Movies, Series, and Anime */}
             <div className="d-flex justify-content-center mt-3">
                 <Link to="/movies" className="btn me-3" style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}>
@@ -75,12 +70,10 @@ const Series = () => {
                     Anime
                 </Link>
             </div>
-
             <hr />
-
             {/* Series grid (4 cards per row) */}
-            <div className="container row">
-                {series.map(serie => (
+            <div className="container ">
+                <div className="row">                {series.map(serie => (
                     <div key={serie.id} className="col-md-2 mb-4 movie-card-container">
                         <Link 
                             to={`/series/${serie.id}`} 
@@ -110,7 +103,7 @@ const Series = () => {
                             </div>
                         </Link>
                     </div>
-                ))}
+                ))}</div>
             </div>
         </div>
     );

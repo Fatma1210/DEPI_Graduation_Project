@@ -6,7 +6,7 @@ export default function Feature() {
   let Arr = Data;
   return (
     <div className="sectionn">
-      <div className="container ">
+      <div className=" container">
         <h1 className="text-white  fs-1 fw-lighter">Our Features</h1>
         <p className=" descc  fs-6 ">
           Welcome to FlixGo movie site, the ultimate destination for all film

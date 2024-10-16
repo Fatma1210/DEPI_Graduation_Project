@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import './movies.css';
+import "./movies.css";
 
-const API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=d7c0a70a1adb796f3cd7b050e54736e4&language=en-US&page=1";
+const API_URL =
+  "https://api.themoviedb.org/3/movie/popular?api_key=d7c0a70a1adb796f3cd7b050e54736e4&language=en-US&page=1";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -21,20 +22,20 @@ const Movies = () => {
   }, []);
 
   return (
-    <div className="my-5">
+    <div className="">
       {/* Inline Header with left-aligned title and right-aligned breadcrumbs */}
       <div>
-        <div className="background-container"> 
-          <div className='container'>
-            <div className='row h-100'>
-              <div className='col-12'>
+        <div className="background-container">
+          <div className="container">
+            <div className="row h-100">
+              <div className="col-12">
                 <div className="contentt h-100 w-100 d-flex align-items-center justify-content-between">
                   {/* Title on the left */}
-                  <h1 className='tittle'>Movies Catalog</h1>
-                  
+                  <h1 className="tittle">Movies Catalog</h1>
+
                   {/* Breadcrumbs on the right */}
-                  <ul className='d-flex list m-0 align-items-center'>
-                    <li className='l-design'>
+                  <ul className="d-flex list m-0 align-items-center">
+                    <li className="l-design">
                       <Link to="/">Home</Link>
                     </li>
                     <li>
@@ -46,46 +47,50 @@ const Movies = () => {
               </div>
             </div>
           </div>
-        </div> 
-        <div className='line'></div>
+        </div>
+        <div className="line"></div>
       </div>
 
       {/* Buttons for Movies, Series, and Anime */}
       <div className="d-flex justify-content-center mt-3">
-        <a 
-          href="/movies" 
-          className="btn me-3" 
-          style={{ backgroundColor: '#FF5599', borderRadius: '25px' }}
+        <a
+          href="/movies"
+          className="btn me-3"
+          style={{ backgroundColor: "#FF5599", borderRadius: "25px" }}
         >
           Movies
         </a>
-        <a 
-          href="/series" 
-          className="btn me-3" 
-          style={{ backgroundColor: '#FF5599', borderRadius: '25px' }} 
+        <a
+          href="/series"
+          className="btn me-3"
+          style={{ backgroundColor: "#FF5599", borderRadius: "25px" }}
         >
           Series
         </a>
-        <a 
-          href="/anime" 
-          className="btn" 
-          style={{  
-            backgroundImage: 'linear-gradient(90deg, #ff55a5 0%, #ff5860 100%)', 
-            borderRadius: '25px'  }} 
+        <a
+          href="/anime"
+          className="btn"
+          style={{
+            backgroundImage: "linear-gradient(90deg, #ff55a5 0%, #ff5860 100%)",
+            borderRadius: "25px",
+          }}
         >
           Anime
         </a>
       </div>
 
       <hr />
-      <div className="container row">
-        {movies.length > 0 ? movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        )) : (
-          <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
-            <p>Loading...</p>
-          </div>
-        )}
+      <div className="container mx-auto">
+        <div className="row">
+          {" "}
+          {movies.length > 0 ? (
+            movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+          ) : (
+            <div className="vh-100 d-flex align-items-center justify-content-center flex-column">
+              <p>Loading...</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -107,11 +112,15 @@ const MovieCard = ({ movie }) => {
           </div>
           <div className="card-body">
             <h5 className="card-title">
-              {movie.title || movie.original_title || movie.name || "Untitled Movie"}
+              {movie.title ||
+                movie.original_title ||
+                movie.name ||
+                "Untitled Movie"}
             </h5>
             <p className="card-text">
               <span className="rating">
-                <i className="fa fa-star" aria-hidden="true"></i> {` ${movie.vote_average}`}
+                <i className="fa fa-star" aria-hidden="true"></i>{" "}
+                {` ${movie.vote_average}`}
               </span>
             </p>
           </div>

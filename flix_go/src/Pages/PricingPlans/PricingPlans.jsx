@@ -9,7 +9,7 @@ import { Routes, Route } from "react-router-dom";
 export { Form };
 export default function PricingPlans() {
   return (
-    <div className="pr">
+
       <div className="">
         <Header />
         <Cards />
@@ -17,6 +17,5 @@ export default function PricingPlans() {
         <Partners />
         <Footer />
       </div>
-    </div>
   );
 }
