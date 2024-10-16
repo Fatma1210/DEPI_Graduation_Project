@@ -60,7 +60,7 @@ export default function SignUp() {
 
     return (
        <div className="signBody">
-         <div className="card m-2" style={{ background: "#2B2B31" }}>
+         <div className="card signupcard m-2" style={{ background: "#2B2B31" }}>
             <div className="container">
                 <div className="text-center mt-3">
                     <img src={logo} alt="Logo" />
