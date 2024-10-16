@@ -8,13 +8,13 @@ import {motion} from 'framer-motion'
 const API_URL = "https://api.jikan.moe/v4/anime"; // Anime API base URL
 
 export default function DetailsAnime() {
-  const { mal_id } = useParams(); // Capture the anime id from URL
+  const { id } = useParams(); // Capture the anime id from URL
   const [details, setDetails] = useState(null);
 
   // Fetch anime details from the API
   function getDetails() {
     axios
-      .get(`${API_URL}/${mal_id}`)
+      .get(`${API_URL}/${id}`)
       .then((res) => {
         setDetails(res.data.data);
       })
@@ -25,8 +25,8 @@ export default function DetailsAnime() {
 
   useEffect(() => {
     getDetails();
-  }, [mal_id]);
-
+  }, [id]);
+ console.log(useParams())
   return (
     <div className="movie-details-container ">
       {details ? (
