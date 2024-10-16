@@ -151,7 +151,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="line3"></div>
-        <div class="row">
+        <div class="row mt-3">
           <div class="col-12">
             <div class="footer__copyright d-flex justify-content-between align-items-center">
               <small className="copytext">

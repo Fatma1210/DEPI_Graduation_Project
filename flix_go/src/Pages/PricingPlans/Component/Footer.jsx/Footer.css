@@ -1,5 +1,5 @@
 .fsection {
-  height: 80vh;
+  height: 60vh;
   background-color: #28282d;
   display: flex;
   flex-direction: column;
@@ -8,11 +8,12 @@
 
 .container {
   height: 80%;
+  overflow-y: hidden;
 }
 
 .fo-row {
   margin-top: 10px;
-  height: 70%;
+  height: 50%;
 }
 
 #logo {

@@ -4,19 +4,19 @@ import { useNavigate } from 'react-router-dom';
 export default function Form() {
   const navigate = useNavigate();
   const handleHideForm = () => {
-    navigate('/'); 
+    navigate('/pricingplans'); 
   };
   const handleSubmit = (event) => {
     event.preventDefault();}
   return (
     <div>
-      <div className="card-cont d-flex justify-content-center">
-        <div className="card mb-3 w-25" style={{ background: "#28282D" }}>
-          <div className="container">
+      <div className="card-contt d-flex justify-content-center">
+        <div className="cardddd mb-3 w-25" style={{ background: "#28282D" }}>
+          <div className="container p-3">
             <div className="text-center mt-3 d-flex justify-content-between">
             
               <h2 className="text-white ps-3 mb-0 mt-4">Select plan</h2>
-              <button onClick={handleHideForm} class="modal__close" type="button" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.41,12l6.3-6.29a1,1,0,1,0-1.42-1.42L12,10.59,5.71,4.29A1,1,0,0,0,4.29,5.71L10.59,12l-6.3,6.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l6.29,6.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"></path></svg></button>
+              <button onClick={handleHideForm} class="modal__close fbutton" type="button" data-bs-dismiss="modall" aria-label="Closee"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.41,12l6.3-6.29a1,1,0,1,0-1.42-1.42L12,10.59,5.71,4.29A1,1,0,0,0,4.29,5.71L10.59,12l-6.3,6.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l6.29,6.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"></path></svg></button>
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit} className="row  g-3 flex-column">
@@ -50,7 +50,7 @@ export default function Form() {
                     Choose plan:
                   </label>
                   <select
-                    class="form-control sign__select mb-5 custom-select"
+                    class="form-control sign__select mb-5 customm-select"
                     name="value"
                     id="value"
                   >
@@ -67,6 +67,7 @@ export default function Form() {
                 <div className="col-auto ">
                   <h6 className="text-white">Payment Method: </h6>
                   <div className="form-check">
+                    <div className="mb-1">
                     <input
                       className="form-check-input"
                       type="Radio"
@@ -87,7 +88,9 @@ export default function Form() {
                     >
                       Visa
                     </label>
+                    </div>
 
+                    <div className="mb-1">
                     <input
                       className="form-check-input"
                       type="Radio"
@@ -107,6 +110,7 @@ export default function Form() {
                     >
                       Mastercard
                     </label>
+                    </div>
 
                     <input
                       className="form-check-input "
@@ -134,7 +138,7 @@ export default function Form() {
                       className="col-auto d-flex justify-content-center mt-3"
                       style={{ color: "#ff568e !important" }}
                     >
-                      <button type="submit" className="btn btn-outline btn-lg">
+                      <button type="submit" className="btn btn-outline btn-lg bbb">
                         Proceed
                       </button>
                     </div>

@@ -6,7 +6,7 @@ export default function Cards() {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate('/form'); 
+    navigate('/formm'); 
   };
   
   return (

@@ -9,6 +9,8 @@ import Profile from "./Pages/Profile/Profile";
 import PricingPlans from "./Pages/PricingPlans/PricingPlans";
 import { Route, Routes } from "react-router-dom";
 import AboutUs from "./Pages/AboutUs/AboutUs";
+import Form from "./Pages/PricingPlans/Component/Form.jsx/Index";
+
 
 function App() {
   return (
@@ -27,7 +29,8 @@ function App() {
           <Route path="/series/:id" element={<DetailsSeries />} />
           <Route path="/anime/:mal_id" element={<DetailsAnime />} />
           <Route path='profile' element={<Profile />} />
-          <Route path='pricingplans' element={<PricingPlans />} />
+          <Route path='pricingplans' element={<PricingPlans/>} />
+          <Route path="/formm" element={<Form />} />
           <Route path='aboutus' element={<AboutUs />} />
           <Route path='*' element={<h1>Not Found</h1>} />
           <Route path='signup' element={<SignUp />} />
